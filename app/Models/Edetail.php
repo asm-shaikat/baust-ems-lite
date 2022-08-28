@@ -20,11 +20,13 @@ class Edetail extends Model
         'previousJob',
         'joiningDate',
         'leavingDate',
-        
+        'name',
+        'email',
+        'phone',
+        'post',
+        'eDept',
+        'password',
     ];
-    public function Employee(){
-        return $this->belongsTo(Employee::class);
-    }
 
     use HasFactory;
 }

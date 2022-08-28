@@ -15,6 +15,14 @@ return new class extends Migration
     {
         Schema::create('edetails', function (Blueprint $table) {
             $table->id();
+            $table->string('name',200);
+            $table->string('email');
+            $table->string('phone',11);
+            $table->string('post');
+            $table->string('eDept');
+            $table->longText('education');
+            $table->boolean('active')->default(1);
+            $table->string('password');
             $table->string('fathersName',255);
             $table->string('mothersName',255);
             $table->bigInteger('nationalID')->unique();
