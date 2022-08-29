@@ -1,10 +1,3 @@
-@extends('welcome');
-<!-- Title -->
-@section('title','Dashboard')
-
-<!-- Navbar -->
-@section('navbar')
-
 <body id="body-pd">
     <header class="header" id="header">
         <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
@@ -22,8 +15,3 @@
         </nav>
     </div>
     <!--Container Main start-->
-    <div class="height-100 bg-light">
-        <p>Welcome back, {{ $membername }}</p>
-    </div>
-    <!--Container Main end-->
-    @endsection

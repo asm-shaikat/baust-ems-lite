@@ -47,12 +47,13 @@ class MemberController extends Controller{
         if (!$member || !Hash::check($request->password, $member->password)) {
             return back()->with('loginfailed', 'Invalid credentials');
         } else {
+            $membername = Member::where('email', $request->email)->get('name');
                 if($member->membertype == "public") {
 
                     return view('Public.public');
                 }
                 else if($member->membertype == "register"){
-                    return view('Register.register-dashboard');
+                    return view('Register.register-dashboard',compact('membername'));
                 }
         }
     }
