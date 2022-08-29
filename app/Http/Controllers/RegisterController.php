@@ -5,9 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Edetail;
 use App\Models\Employee;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller{
+    public function viewaddEmployees(){
+        return view('Register.add-employee');   
+    }
     
     public function addEmployees(Request $request){
         $employees_details = new Edetail();
@@ -26,6 +30,12 @@ class RegisterController extends Controller{
         $employees_details->education = $request->has('education') ? $request->get('education') :" ";
         $employees_details->password = Hash::make($request->has('password') ? $request->get('password') :" ");
         $employees_details->save();
+        return redirect('/addemployees');
        
     }
+    public function logout() {
+        // Auth::logout();
+        return redirect('/');
+    }
+    
 }
