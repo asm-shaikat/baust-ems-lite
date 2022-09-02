@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
@@ -8,7 +9,13 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => 'prevent-back-history'],function(){     //Start of preventBackHistory middleware
 	
 /* Universal Login */
-Route::get('/',[MemberController::class,'index']);
+Route::get('/',[LoginController::class,'index']);
+
+// Public page view route
+Route::get('/viewpublicpage',[LoginController::class,'Public_page']);
+
+
+
 
 /* Register routers */
 
@@ -20,7 +27,6 @@ Route::post('/register',[MemberController::class,'register']);
 Route::get('/view-register-dashboard',[MemberController::class,'login']);
 // Dashboard
 Route::post('/login',[MemberController::class,'login']);
-Route::get('/dashboard',[MemberController::class,'dashboard']);
 
 // Add employees from register
 Route::post('/sendemployeedata',[RegisterController::class,'addEmployees']);

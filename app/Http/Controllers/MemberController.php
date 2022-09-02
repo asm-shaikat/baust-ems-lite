@@ -14,17 +14,9 @@ use Illuminate\Validation\ValidationException;
 
 class MemberController extends Controller{
 
-    // Universal login view
-    public function index(){
-        return view('universal-login');
-    }
-
+    // temporarily register form
     public function viewregister(){
         return view("register");
-    }
-
-    public function dashboard(){
-        return view('Public.dashboard');
     }
    
     public function addemployees(){
@@ -50,7 +42,7 @@ class MemberController extends Controller{
             $membername = Member::where('email', $request->email)->get('name');
                 if($member->membertype == "public") {
 
-                    return view('Public.public');
+                    return view('Public.publicpage');
                 }
                 else if($member->membertype == "register"){
                     return view('Register.register-dashboard',compact('membername'));

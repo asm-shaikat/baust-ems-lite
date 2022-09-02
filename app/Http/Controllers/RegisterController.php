@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Edetail;
 use App\Models\Employee;
+use App\Models\Login;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -15,6 +16,7 @@ class RegisterController extends Controller{
     
     public function addEmployees(Request $request){
         $employees_details = new Edetail();
+        $login = new Login();
         $employees_details->fathersName = $request->has('fathersName') ? $request->get('fathersName') : " ";
         $employees_details->mothersName = $request->has('mothersName') ? $request->get('mothersName') : " ";
         $employees_details->nationalID = $request->has('nationalID') ? $request->get('nationalID') : " ";
@@ -30,6 +32,13 @@ class RegisterController extends Controller{
         $employees_details->education = $request->has('education') ? $request->get('education') :" ";
         $employees_details->password = Hash::make($request->has('password') ? $request->get('password') :" ");
         $employees_details->save();
+
+        // Inserting into Login table
+        $login->email = $employees_details->email;
+        $login->phone = $employees_details->phone;
+        $login->password = $employees_details->password;
+        $login->user_type = $employees_details->post;
+        $login->save();
         return redirect('/addemployees');
        
     }
