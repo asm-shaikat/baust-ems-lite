@@ -42,9 +42,9 @@ class RegisterController extends Controller{
         return redirect('/addemployees');
        
     }
-    public function logout() {
-        // Auth::logout();
-        return redirect('/');
+    public function registerProfile(){
+        return view('Register.profile');
     }
+   
     
 }

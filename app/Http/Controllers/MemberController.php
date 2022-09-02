@@ -32,21 +32,22 @@ class MemberController extends Controller{
         $member->save();
     }
 
-    // Universal login method
-    public function login(Request $request)
-    {
-        $member = Member::where('email', $request->email)->first();
-        if (!$member || !Hash::check($request->password, $member->password)) {
-            return back()->with('loginfailed', 'Invalid credentials');
-        } else {
-            $membername = Member::where('email', $request->email)->get('name');
-                if($member->membertype == "public") {
+    // // Universal login method
+    // public function login(Request $request)
+    // {
+    //     $member = Member::where('email', $request->email)->first();
+    //     if (!$member || !Hash::check($request->password, $member->password)) {
+    //         return back()->with('loginfailed', 'Invalid credentials');
+    //     } else {
+    //         $membername = Member::where('email', $request->email)->get('name');
+    //             if($member->membertype == "public") {
 
-                    return view('Public.publicpage');
-                }
-                else if($member->membertype == "register"){
-                    return view('Register.register-dashboard',compact('membername'));
-                }
-        }
-    }
+    //                 return view('Public.publicpage');
+    //             }
+    //             else if($member->membertype == "register"){
+    //                 return view('Register.register-dashboard',compact('membername'));
+    //             }
+    //     }
+    // }
+    
 }
