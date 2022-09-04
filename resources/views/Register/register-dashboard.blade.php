@@ -23,7 +23,6 @@
     </div>
     <!--Container Main start-->
     <div class="height-100 bg-light">
-        <p>Your email is {{ $userinfo['email'] }}</p>
     </div>
     <!--Container Main end-->
     @endsection

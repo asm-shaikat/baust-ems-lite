@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Edetail;
 use App\Models\Login;
 use App\Models\Member;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller{
@@ -27,19 +29,21 @@ class LoginController extends Controller{
             return back()->with('loginfailed','Invalid credentials');
         }
         else{
-             $request->session()->put('loggedUser',$authUserInfo->id);
-             $userdata = ['userinfo'=>Login::where('id','=',session('loggedUser'))->first()];
-             $userdata1 = Login::where('email','=',$request->email)->first();
+              $request->session()->put('loggedUserEmail',$authUserInfo->email);             
+            //  $userdata = ['userinfo'=>Login::where('email','=',session('loggedUserEmail'))->first()];
+                
+                
             if($authUserInfo->user_type == 'public'){
-                return view('Public.publicpage',$userdata);
+                return view('Public.publicpage');
             }
             else if($authUserInfo->user_type == 'register'){
-                return view('Register.register-dashboard',$userdata);
-            }
-            else if($authUserInfo->user_type == 'recruiter'){
-                // $getId = Session('loggedUser');
-                // dd(Login::find($getId));
-                return view('Recruiter.recruiter-dashboard',$userdata);
+                return view('Register.add-employee');
+            } 
+            else if ($authUserInfo->user_type == 'recruiter') {
+                $getSessionUserEmail = Session('loggedUserEmail');
+                $send_data = DB::table('edetails')->select("*")->where('email', $getSessionUserEmail)->get();
+                $data = json_decode($send_data);
+                return view('Recruiter.recruiter-dashboard',compact('data'));
             }
 
         }
@@ -50,7 +54,9 @@ class LoginController extends Controller{
             session()->pull('loggedUser');
             return redirect('/');
         }
-
+        else{
+            return redirect('/');
+        }
     }
 
     // for public page view
@@ -58,11 +64,15 @@ class LoginController extends Controller{
     public function Public_page(){
         return view('Public.publicpage');
     }
-    public function Profile(){
-        // $userdata = session('loggedUser')->first();
-        // $getId = Session('loggedUser');
-        // dd(Login::find($getId));
-        return view('profile');
+    public function Profile(Request $request){
+        $getSessionUserEmail = Session('loggedUserEmail');
+        $send_data = DB::table('edetails')->select("*")->where('email',$getSessionUserEmail)->get();
+        $data = json_decode($send_data);
+        return view('profile',compact('data'));
+    }
+    
+    public function add_student(){
+        return view('Recruiter.add-student');
     }
 
 

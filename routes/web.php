@@ -45,6 +45,7 @@ Route::post('/register/sendemployeedata',[RegisterController::class,'addEmployee
 
 Route::get('/recruiter/home',[LoginController::class,'login']);
 
+Route::get('/recruiter/add-student',[LoginController::class,'add_student']);
 
 // Logout
 Route::post('/logout',[LoginController::class,'logout']);

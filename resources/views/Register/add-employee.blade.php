@@ -6,12 +6,12 @@
 @include('Register.navbar')
 
 @section('content')
-<div>
-<p class="text-4xl text-yellow-700 font-extrabold ml-">ADD EMPLOYEES</p>
+<div class="ml-96">
     @if(Session::get('success'))
-        {{ session::get('success') }}
+    {{ session::get('success') }}
     @endif
-            <form action="/register/sendemployeedata" method="post" enctype="multipart/form-data">
+    <form action="/register/sendemployeedata" method="post" enctype="multipart/form-data">
+                <p class="text-4xl text-yellow-700 font-extrabold ml-52">ADD EMPLOYEES</p>
                 @csrf
                 <div class="form-parent flex ">
                     <div class="form-1 ">

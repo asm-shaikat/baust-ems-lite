@@ -19,7 +19,8 @@
                         <span class="badge">New</span>
                     </a>
                 </li>
-                <li><a class="text-white">Settings</a></li>
+                <li><a class="text-white" href="/recruiter/add-student">Add Student</a></li>
+                <li><a class="text-white" >Settings</a></li>
                 <form action="{{ url('/logout') }}" method="post">
                     @csrf
                     <button type="submit"><li><a class="text-white">Logout</a></li></button>
