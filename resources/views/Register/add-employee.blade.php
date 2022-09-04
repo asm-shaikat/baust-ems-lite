@@ -91,7 +91,7 @@
                         </div>
                         <div class="mb-3 w-96">
                             <label for="exampleFormControlInput1" class="form-label">National ID</label>
-                            <input type="text" name="nationalID" class="form-control w-40" id="exampleFormControlInput1" placeholder="Enter National ID" >
+                            <input type="text" name="nationalID" class="form-control w-40" id="exampleFormControlInput1" placeholder="Enter 10-16 digit National ID" >
                             <small class="text-red-700">@error('nationalID') {{$message}}  @enderror</small>
 
                         </div>

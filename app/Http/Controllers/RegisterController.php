@@ -25,7 +25,7 @@ class RegisterController extends Controller{
             'bloodGrp'=>'required',
             'joiningDate'=>'required',
             'nationalID'=>'required',
-            'nationalID'=>'required|max:10',
+            'nationalID'=>'required|max:16|min:10',
             'phone' => 'required|max:11',
             'post' => 'required',
             'eDept' => 'required',
