@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('phone',11);
             $table->string('post');
-            $table->string('eDept');
+            $table->string('eDept')->nullable();
             $table->longText('education');
             $table->boolean('active')->default(1);
             $table->string('password');

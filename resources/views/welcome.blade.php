@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
     <script src="{{ asset('/js/register-dashboard.js') }}"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
+
     <title>@yield('title')</title>
 </head>
 

@@ -36,6 +36,9 @@ class LoginController extends Controller{
             else if($authUserInfo->user_type == 'register'){
                 return view('Register.register-dashboard',$userdata);
             }
+            else if($authUserInfo->user_type == 'recruiter'){
+                return view('Recruiter.recruiter-dashboard',$userdata);
+            }
 
         }
     }

@@ -31,6 +31,8 @@
                                 <option value="department-head">Department Head</option>
                                 <option value="register">Register</option>
                                 <option value="examination-controller">Examination Controller</option>
+                                <option value="recruiter">Recruiter Officer</option>
+                                <option value="Accounts">Accounts</option>
                                 <option value="associate-professor">Associate Professor</option>
                                 <option value="professor">Professor</option>
                                 <option value="Lecturer">Lecturer</option>
@@ -42,8 +44,6 @@
                             <label for="exampleFormControlInput1" class="form-label">Employee Department</label>
                             <select class="form-select" name="eDept" aria-label="Default select example">
                                 <option selected>Select a department</option>
-                                <option value="admission">Admission</option>
-                                <option value="Accounts">Accounts</option>
                                 <option value="cse">CSE</option>
                                 <option value="eee">EEE</option>
                                 <option value="me">ME</option>

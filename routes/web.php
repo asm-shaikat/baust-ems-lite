@@ -29,7 +29,7 @@ Route::get('/viewregister',[MemberController::class,'viewregister']);
 Route::post('/register',[MemberController::class,'register']);
 
 //  viewing registration dashboard
-Route::get('/view-register-dashboard',[MemberController::class,'login']);
+// Route::get('/view-register-dashboard',[MemberController::class,'login']);
 
 
 // Add employees from register
@@ -42,6 +42,11 @@ Route::get('/profile',[LoginController::class,'Profile'])->name('register-profil
 // Add new employees 
 Route::get('/addemployees',[RegisterController::class,'viewaddEmployees']);
 Route::post('/sendemployeedata',[RegisterController::class,'addEmployees']);
+
+// Recruiter routes
+
+Route::get('/recruiter/home',[LoginController::class,'login']);
+
 
 // Logout
 Route::post('/logout',[LoginController::class,'logout']);
