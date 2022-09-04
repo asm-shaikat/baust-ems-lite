@@ -4,8 +4,8 @@
         <nav class="nav">
             <div> <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">BAUST</span> </a>
                 <div class="nav_list">
-                    <a href="/addemployees" class="nav_link"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Add New Employee</span> </a>
-                    <a href="/profile" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">Profile</span> </a>
+                    <a href="/register/addemployees" class="nav_link"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Add New Employee</span> </a>
+                    <a href="/register/profile" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">Profile</span> </a>
                     <a href="#" class="nav_link"> <i class='bx bx-message-square-detail nav_icon'></i> <span class="nav_name">Messages</span> </a>
                     <a href="#" class="nav_link"> <i class='bx bx-bookmark nav_icon'></i> <span class="nav_name">Bookmark</span> </a>
                     <a href="#" class="nav_link"> <i class='bx bx-folder nav_icon'></i> <span class="nav_name">Files</span> </a>

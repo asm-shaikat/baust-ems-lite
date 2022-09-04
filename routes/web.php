@@ -35,7 +35,7 @@ Route::post('/register',[MemberController::class,'register']);
 
 // View profile page
 
-Route::get('/profile',[LoginController::class,'Profile'])->name('register-profile');
+Route::get('/register/profile',[LoginController::class,'Profile'])->name('register-profile');
 
 // Add new employees 
 Route::get('/register/addemployees',[RegisterController::class,'viewaddEmployees']);
