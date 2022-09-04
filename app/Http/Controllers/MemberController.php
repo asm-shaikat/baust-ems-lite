@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Login;
 use App\Models\Member;
 use Exception;
 use Illuminate\Http\Request;
@@ -24,30 +25,14 @@ class MemberController extends Controller{
     }
     public function register(Request $request)
     {
-        $member = new Member();
-        $member->name = $request->has('name') ? $request->get('name') : "";
+        $member = new Login();
         $member->email = $request->has('email') ? $request->get('email') : "";
         $member->password = Hash::make($request->has('password') ? $request->get('password') : "");
-        $member->membertype = $request->has('membertype') ? $request->get('membertype') : "public";
+        $member->phone = Hash::make($request->has('password') ? $request->get('password') : "");        
+        $member->user_type = $request->has('user_type') ? $request->get('user_type') : "public";
         $member->save();
     }
 
-    // // Universal login method
-    // public function login(Request $request)
-    // {
-    //     $member = Member::where('email', $request->email)->first();
-    //     if (!$member || !Hash::check($request->password, $member->password)) {
-    //         return back()->with('loginfailed', 'Invalid credentials');
-    //     } else {
-    //         $membername = Member::where('email', $request->email)->get('name');
-    //             if($member->membertype == "public") {
-
-    //                 return view('Public.publicpage');
-    //             }
-    //             else if($member->membertype == "register"){
-    //                 return view('Register.register-dashboard',compact('membername'));
-    //             }
-    //     }
-    // }
+   
     
 }

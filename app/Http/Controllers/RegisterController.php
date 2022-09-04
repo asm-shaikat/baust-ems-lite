@@ -15,6 +15,22 @@ class RegisterController extends Controller{
     }
     
     public function addEmployees(Request $request){
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|unique:edetails',
+            'password' => 'required|min:5|max:8',
+            'fathersName' => 'required',
+            'mothersName'=> 'required',
+            'nationalID'=>'required',
+            'bloodGrp'=>'required',
+            'joiningDate'=>'required',
+            'nationalID'=>'required',
+            'nationalID'=>'required',
+            'phone' => 'required|max:11',
+            'post' => 'required',
+            'eDept' => 'required',
+            'education' => 'required',
+        ]);
         $employees_details = new Edetail();
         $login = new Login();
         $employees_details->fathersName = $request->has('fathersName') ? $request->get('fathersName') : " ";
@@ -39,7 +55,7 @@ class RegisterController extends Controller{
         $login->password = $employees_details->password;
         $login->user_type = $employees_details->post;
         $login->save();
-        return redirect('/addemployees');
+        return back()->with('success',"Employee added successfully");
        
     }
     public function registerProfile(){

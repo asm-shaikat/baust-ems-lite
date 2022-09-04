@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('edetails', function (Blueprint $table) {
             $table->id();
             $table->string('name',200);
-            $table->string('email');
-            $table->string('phone',11);
+            $table->string('email')->unique();
+            $table->string('phone',12);
             $table->string('post');
             $table->string('eDept')->nullable();
             $table->longText('education');
@@ -27,7 +27,7 @@ return new class extends Migration
             $table->string('mothersName',255);
             $table->bigInteger('nationalID')->unique();
             $table->string('bloodGrp');
-            $table->string('previousJob',255);
+            $table->string('previousJob',255)->nullable();
             $table->date('joiningDate');
             $table->date('leavingDate')->nullable();
             $table->timestamps();

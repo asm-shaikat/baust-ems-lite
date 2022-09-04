@@ -37,6 +37,8 @@ class LoginController extends Controller{
                 return view('Register.register-dashboard',$userdata);
             }
             else if($authUserInfo->user_type == 'recruiter'){
+                // $getId = Session('loggedUser');
+                // dd(Login::find($getId));
                 return view('Recruiter.recruiter-dashboard',$userdata);
             }
 
@@ -58,8 +60,8 @@ class LoginController extends Controller{
     }
     public function Profile(){
         // $userdata = session('loggedUser')->first();
-        $getId = Session('loggedUser');
-        dd(Login::find($getId));
+        // $getId = Session('loggedUser');
+        // dd(Login::find($getId));
         return view('profile');
     }
 

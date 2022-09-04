@@ -32,8 +32,6 @@ Route::post('/register',[MemberController::class,'register']);
 // Route::get('/view-register-dashboard',[MemberController::class,'login']);
 
 
-// Add employees from register
-Route::post('/sendemployeedata',[RegisterController::class,'addEmployees']);
 
 // View profile page
 
