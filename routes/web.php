@@ -38,8 +38,8 @@ Route::post('/register',[MemberController::class,'register']);
 Route::get('/profile',[LoginController::class,'Profile'])->name('register-profile');
 
 // Add new employees 
-Route::get('/addemployees',[RegisterController::class,'viewaddEmployees']);
-Route::post('/sendemployeedata',[RegisterController::class,'addEmployees']);
+Route::get('/register/addemployees',[RegisterController::class,'viewaddEmployees']);
+Route::post('/register/sendemployeedata',[RegisterController::class,'addEmployees']);
 
 // Recruiter routes
 

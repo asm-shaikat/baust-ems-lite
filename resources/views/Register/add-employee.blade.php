@@ -6,13 +6,14 @@
 @include('Register.navbar')
 
 @section('content')
-<p class="text-4xl text-yellow-700 font-extrabold ml-48">ADD EMPLOYEES</p>
+<div>
+<p class="text-4xl text-yellow-700 font-extrabold ml-">ADD EMPLOYEES</p>
     @if(Session::get('success'))
         {{ session::get('success') }}
     @endif
-            <form action="/sendemployeedata" method="post" enctype="multipart/form-data">
+            <form action="/register/sendemployeedata" method="post" enctype="multipart/form-data">
                 @csrf
-                <div class="form-parent flex">
+                <div class="form-parent flex ">
                     <div class="form-1 ">
                         <div class="mb-3 mr-32 w-96">
                             <label for="exampleFormControlInput1" class="form-label">Email Address</label>
@@ -131,4 +132,5 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
+</div>
 @endsection
