@@ -61,6 +61,7 @@ class RegisterController extends Controller{
     public function registerProfile(){
         return view('Register.profile');
     }
-   
     
+    
+   
 }

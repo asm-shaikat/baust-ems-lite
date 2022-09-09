@@ -25,7 +25,7 @@ class LoginController extends Controller{
             'password' => 'required|min:5|max:8|',
         ]);
         $authUserInfo = Login::where('email',$request->email)->first();
-        if(!$authUserInfo || !Hash::check($request->password,$authUserInfo->password)){
+        if(!$authUserInfo && !Hash::check($request->password,$authUserInfo->password)){
             return back()->with('loginfailed','Invalid credentials');
         }
         else{
@@ -37,7 +37,7 @@ class LoginController extends Controller{
                 return view('Public.publicpage');
             }
             else if($authUserInfo->user_type == 'register'){
-                return view('Register.add-employee');
+                return view('Register.home');
             } 
             else if ($authUserInfo->user_type == 'recruiter') {
                 $getSessionUserEmail = Session('loggedUserEmail');
