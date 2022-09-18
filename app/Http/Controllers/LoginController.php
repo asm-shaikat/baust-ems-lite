@@ -22,7 +22,7 @@ class LoginController extends Controller{
     public function login(Request $request){
         $request->validate([
             'email' => 'required|email',
-            'password' => 'required|min:5|max:8|',
+            'password' => 'required|min:8',
         ]);
         $authUserInfo = Login::where('email',$request->email)->first();
         if(!$authUserInfo && !Hash::check($request->password,$authUserInfo->password)){
@@ -74,6 +74,7 @@ class LoginController extends Controller{
     public function add_student(){
         return view('Recruiter.add-student');
     }
+    
 
 
 }

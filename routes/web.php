@@ -19,7 +19,7 @@ Route::post('/login',[LoginController::class,'login'])->name('auth.login');
 // Public page view route
 Route::get('/viewpublicpage',[LoginController::class,'Public_page']);
 
-
+Route::get('/register/setting',[RegisterController::class,'viewRegisterSetting']);
 
 
 /* Register routers */
@@ -51,3 +51,7 @@ Route::get('/recruiter/add-student',[LoginController::class,'add_student']);
 Route::post('/logout',[LoginController::class,'logout']);
 
 });  //end of preventBackHistory middleware 
+
+//add student
+Route::post('recruiter/send_add_student_data', [RecuiterController::class, 'send_add_student_data']);
+
