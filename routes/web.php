@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\RecuiterController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
@@ -50,8 +51,8 @@ Route::get('/recruiter/add-student',[LoginController::class,'add_student']);
 // Logout
 Route::post('/logout',[LoginController::class,'logout']);
 
+//add student
+Route::post('/recruiter/send_add_student_data', [RecuiterController::class, 'send_add_student_data']);
 });  //end of preventBackHistory middleware 
 
-//add student
-Route::post('recruiter/send_add_student_data', [RecuiterController::class, 'send_add_student_data']);
 
