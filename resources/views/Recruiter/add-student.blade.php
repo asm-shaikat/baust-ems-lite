@@ -12,13 +12,18 @@
       <div class="text-sm  text-blue-500"> 
          <h2>Add New Student</h2>
 </div>
+@if(Session::get('success'))
+    {{ session::get('success') }}
+    @endif
 </div>
 <div class="flex justify-center my-2 mx-4 md:mx-0">
-   <form class="w-full max-w-xl bg-white rounded-lg shadow-md p-6" action="recruiter/send_add_student_data" method="post">
+   <form class="w-full max-w-xl bg-white rounded-lg shadow-md p-6" action="{{ url('/recruiter/send_add_student_data') }}" method="post" enctype="multipart/form">
+      @csrf
       <div class="flex flex-wrap -mx-3 mb-6">
          <div class="w-full md:w-full px-3 mb-6">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for='Full_name'>Full name</label>
             <input type='text' name="name" placeholder="Student Full Name" class="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none" required>
+            
          </div>
          <div class="w-full md:w-full px-3 mb-6">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for='Father_name'>Fathers Name</label>
@@ -26,7 +31,7 @@
          </div>
          <div class="w-full md:w-full px-3 mb-6">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for='Father_phone'>Father's Phone Number</label>
-            <input name="f_phone" placeholder="0172345678" class="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none" type='tel' required>
+            <input name="f_phone" placeholder="0172345678" class="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none" type='text' required>
          </div>
          <div class="w-full md:w-full px-3 mb-6">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for='Mother_name'>Mothers Name</label>
@@ -74,6 +79,8 @@
          <div class="w-full md:w-full px-3 mb-6">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for='Student_mobile'>Student's Phone Number</label>
             <input name="s_phone" placeholder="0172345678" class="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none" type='tel' required>
+            <small class="text-red-700">@error('s_phone') {{$message}}  @enderror</small>
+
          </div>
          <div class="w-full md:w-full px-3 mb-6">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for='Parmanent_address'>Permanent Address</label>
@@ -86,16 +93,18 @@
          <div class="w-full md:w-full px-3 mb-6">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for='Email'>Email address</label>
             <input type='email' name="email" class="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none" required>
+            <small class="text-red-700">@error('email') {{$message}}  @enderror</small>
          </div>
          <div class="w-full md:w-full px-3 mb-6">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for='Password'>Password</label>
             <input name="password" class="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none" type='password' required>
+            <small class="text-red-700">@error('password') {{$message}}  @enderror</small>
          </div>
          <div class="w-full flex items-center justify-between px-3 mb-3 ">
           
          </div>
          <div class="w-full md:w-full px-3 mb-6">
-            <button type="submit" class="appearance-none block w-full bg-blue-600 text-gray-100 font-bold border border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-blue-500 focus:outline-none focus:bg-white focus:border-gray-500">ADD Student</button>
+            <input type="submit" class="appearance-none block w-full bg-blue-600 text-gray-100 font-bold border border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-blue-500 focus:outline-none focus:bg-white focus:border-gray-500" />
          </div>
          
       </div>

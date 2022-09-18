@@ -22,7 +22,7 @@ class LoginController extends Controller{
     public function login(Request $request){
         $request->validate([
             'email' => 'required|email',
-            'password' => 'required|min:8',
+            'password' => 'required|min:5',
         ]);
         $authUserInfo = Login::where('email',$request->email)->first();
         if(!$authUserInfo && !Hash::check($request->password,$authUserInfo->password)){
