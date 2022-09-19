@@ -5,15 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\Edetail;
 use App\Models\Employee;
 use App\Models\Login;
+use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
+
 
 class RegisterController extends Controller{
     public function viewaddEmployees(){
         return view('Register.add-employee');   
     }
-    
     public function addEmployees(Request $request){
         $request->validate([
             'name' => 'required',
@@ -64,6 +66,15 @@ class RegisterController extends Controller{
    
     public function viewRegisterSetting(){
         return view('Register.setting');
+    }
+    public function view_students_info(){
+        $studentInfo = Student::all();
+        // dd($studentInfo);
+        return view('Register.students-info',compact('studentInfo'));
+    }
+    public function view_details_student_info($id){
+        $data = DB::table('students')->where('id',$id)->get();
+        return view('Register.students-info-details',compact('data'));
     }
     
    

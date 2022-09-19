@@ -38,6 +38,11 @@ Route::post('/register',[MemberController::class,'register']);
 
 Route::get('/register/profile',[LoginController::class,'Profile'])->name('register-profile');
 
+//view student min information  
+Route::get('/register/view-students-info',[RegisterController::class,'view_students_info']);
+Route::get('/register/view-details-student-info/{id}',[RegisterController::class,'view_details_student_info']);
+Route::get('/register/show-details-student-info',[RegisterController::class,'show_details_student_info']);
+
 // Add new employees 
 Route::get('/register/addemployees',[RegisterController::class,'viewaddEmployees']);
 Route::post('/register/sendemployeedata',[RegisterController::class,'addEmployees']);
