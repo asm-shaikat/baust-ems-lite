@@ -22,7 +22,6 @@
 
     <title>@yield('title')</title>
 </head>
-
 <body>
     @yield('navbar')
     @yield('content')

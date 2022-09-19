@@ -37,6 +37,7 @@ class LoginController extends Controller{
                 return view('Public.publicpage');
             }
             else if($authUserInfo->user_type == 'register'){
+                // $getAllStudentdata = DB::table('students')->get()->all();
                 return view('Register.home');
             } 
             else if ($authUserInfo->user_type == 'recruiter') {
