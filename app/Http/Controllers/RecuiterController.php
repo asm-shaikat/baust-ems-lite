@@ -19,6 +19,58 @@ class RecuiterController extends Controller
         $recuit_student = new Student();
         $login = new Login();
         $recuit_student->name = $request->has('name') ? $request->get('name') :"";
+        $dept = $request->has('dept') ? $request->get('dept') :"";
+        $recuit_student->dept=$dept;
+        $recuit_student->batch = $request->has('batch') ? $request->get('batch') :"";
+        $recuit_student->level = $request->has('level') ? $request->get('level') :"";
+        $recuit_student->term = $request->has('term') ? $request->get('term') :"";
+        $d_id = $request->has('d_id') ? $request->get('d_id') :"";
+        $dept_id = "";
+        if ($d_id!="")
+        {
+            $dept_id = $d_id;
+        }
+        else
+        {
+            $year = $request->has('year') ? $request->get('year') :"";
+            $semester = $request->has('semester') ? $request->get('semester') :"";
+            $newid = find_id($request);
+            $dept_code = "01";
+            if($dept == "CSE")
+            {
+                $dept_code = "01";
+            }
+            else if($dept == "EEE")
+            {
+                $dept_code = "02";
+            }
+            else if($dept == "ME")
+            {
+                $dept_code = "03";
+            }
+            else if($dept == "CE")
+            {
+                $dept_code = "04";
+            }
+            else if($dept == "IPE")
+            {
+                $dept_code = "05";
+            }
+            else if($dept == "BBA")
+            {
+                $dept_code = "06";
+            }
+            else if($dept == "ENGLISH")
+            {
+                $dept_code = "07";
+            }
+            else
+            {
+                $dept_code = "08";
+            }
+            $dept_id = $year.$semester.$dept_code.str_pad($newid, 3, '0', STR_PAD_LEFT);
+        }
+        $recuit_student->dept_id = $dept_id;
         $recuit_student->f_name = $request->has('f_name') ? $request->get('f_name') :"";
         $recuit_student->f_phone = $request->has('f_phone') ? $request->get('f_phone') :"";
         $recuit_student->m_name = $request->has('m_name') ? $request->get('m_name') :"";
@@ -34,6 +86,7 @@ class RecuiterController extends Controller
         $recuit_student->email = $request->has('email') ? $request->get('email') :"";
         $recuit_student->password = Hash::make($request->has('password') ? $request->get('password') : " ");       
         $recuit_student->user_type = "student";
+        $recuit_student->email = $request->has('active') ? $request->get('active') :"";
         $recuit_student->save();
         
 
@@ -43,6 +96,13 @@ class RecuiterController extends Controller
         $login->password = $recuit_student->password;
         $login->user_type = $recuit_student->user_type;
         $login->save();
-        return back()->with('success', 'Students added successfully');
+        return back()->with('success', 'Students added successfully and Student id is'.' '.$dept_id);
+    }
+    public function find_id(Request $request)
+    {
+        $get_id = DB::table('students')->select->count()->where('dept','=',$request->dept)->where('batch','=',$request->batch)->first();
+        return $get_id[0][0]+1;
+
     }
 }
+?>
