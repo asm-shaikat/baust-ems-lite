@@ -6,14 +6,12 @@ use App\Models\Login;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
+
 
 class RecuiterController extends Controller
 {
-    public function find_id(Request $request)
-    {
-        $get_id = DB::table('students')->select->count()->where('dept','=',$request->dept)->where('batch','=',$request->batch)->first();
-        return $get_id[0][0]+1;
-    }
+   
     public function send_add_student_data(Request $request)
     {
         $request->validate([
@@ -39,7 +37,9 @@ class RecuiterController extends Controller
         {
             $year = $request->has('year') ? $request->get('year') :"";
             $semester = $request->has('semester') ? $request->get('semester') :"";
-            $newid = find_id($request);
+            $get_id = DB::table('students')->select('*')->count()->where([['dept','=',$request->dept],['batch','=',intval($request->batch)]])->first();
+            $newid = $get_id[0][0]+1;
+
             $dept_code = "01";
             if($dept == "CSE")
             {
@@ -102,6 +102,11 @@ class RecuiterController extends Controller
         $login->user_type = $recuit_student->user_type;
         $login->save();
         return back()->with('success', 'Students added successfully and Student id is'.' '.$dept_id);
+        // function find_id(Request $request)
+        // {
+        // $get_id = DB::table('students')->select->count()->where('dept','=',$request->dept)->where('batch','=',$request->batch)->first();
+        // return $get_id[0][0]+1;
+        // }
     }
     
 }

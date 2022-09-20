@@ -156,8 +156,8 @@
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for='Active'>Active</label>
             <select class="form-select" name="active" aria-label="Default select example">
                <option selected>Active</option>
-               <option value="true">Online</option>
-               <option value="false">Offline</option>
+               <option value="1">Online</option>
+               <option value="0">Offline</option>
             </select>
          </div>
          <div class="w-full md:w-full px-3 mb-6">

@@ -35,7 +35,7 @@ return new class extends Migration
             $table->string('present_address');
             $table->string('email');
             $table->string('password');
-            $table->boolean('active')->default(true);
+            $table->integer('active')->default(1);
             $table->string('user_type');
             $table->timestamps();
         });
