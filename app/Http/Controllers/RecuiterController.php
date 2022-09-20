@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Hash;
 
 class RecuiterController extends Controller
 {
+    public function find_id(Request $request)
+    {
+        $get_id = DB::table('students')->select->count()->where('dept','=',$request->dept)->where('batch','=',$request->batch)->first();
+        return $get_id[0][0]+1;
+    }
     public function send_add_student_data(Request $request)
     {
         $request->validate([
@@ -86,7 +91,7 @@ class RecuiterController extends Controller
         $recuit_student->email = $request->has('email') ? $request->get('email') :"";
         $recuit_student->password = Hash::make($request->has('password') ? $request->get('password') : " ");       
         $recuit_student->user_type = "student";
-        $recuit_student->email = $request->has('active') ? $request->get('active') :"";
+        $recuit_student->active = $request->has('active') ? $request->get('active') :"";
         $recuit_student->save();
         
 
@@ -98,11 +103,6 @@ class RecuiterController extends Controller
         $login->save();
         return back()->with('success', 'Students added successfully and Student id is'.' '.$dept_id);
     }
-    public function find_id(Request $request)
-    {
-        $get_id = DB::table('students')->select->count()->where('dept','=',$request->dept)->where('batch','=',$request->batch)->first();
-        return $get_id[0][0]+1;
-
-    }
+    
 }
 ?>
