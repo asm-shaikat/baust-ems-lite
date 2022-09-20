@@ -16,12 +16,17 @@ return new class extends Migration
         Schema::create('students', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('dept');
+            $table->integer('dept_id');
+            $table->integer('batch');
+            $table->integer('level');
+            $table->integer('term');
             $table->string('f_name');
             $table->string('f_phone');
             $table->string('m_name');
             $table->string('m_phone');
             $table->date('b_date');
-            $table->integer('b_id');
+            $table->bigInteger('b_id');
             $table->string('religion');
             $table->string('gender');
             $table->string('blood');
@@ -30,6 +35,8 @@ return new class extends Migration
             $table->string('present_address');
             $table->string('email');
             $table->string('password');
+            $table->integer('active')->default(1);
+            $table->string('user_type');
             $table->timestamps();
         });
     }
