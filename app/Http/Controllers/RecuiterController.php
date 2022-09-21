@@ -16,7 +16,7 @@ class RecuiterController extends Controller
     {
         $request->validate([
             'email' => 'required|unique:students',
-            'password' => 'required|min:5',
+            'password' => 'required|min:5|max:8',
             's_phone' => 'required|max:11',
         ]);
         $recuit_student = new Student();
