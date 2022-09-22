@@ -4,10 +4,10 @@
 <!-- Navbar -->
 @include('Register.navbar')
 @section('content')
-<div class="flex flex-col w-full drop-shadow-lg">
-  <div class="grid h-20 card bg-base-300 rounded-box place-items-center">
-      <p class="text-center text-2xl">Student Information</p>
-    @foreach($data as $data)
+@foreach($data as $data)
+<div class="w-full drop-shadow-lg">
+  <div class="h-auto card bg-base-300 rounded-box place-items-center">
+      <p class="text-2xl">Student Information</p>
     <p>Full name: {{ $data->name }}</p>
     <p>Email: {{ $data->email }}</p>
     <p>Mobile no: {{ $data->s_phone }}</p>
@@ -21,8 +21,7 @@
     <p>Mother's name: {{ $data->m_name }}</p>
     <p>Mother's contact: {{ $data->m_phone }}</p>
 
-    @endforeach
-  <p></p>
   </div> 
 </div>
+@endforeach
 @endsection

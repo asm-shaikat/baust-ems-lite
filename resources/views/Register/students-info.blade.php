@@ -12,6 +12,7 @@
         <th>Id</th>
         <th>Name</th>
         <th>Email</th>
+        <th>Phone</th>
         <th>View</th>
       </tr>
     </thead>
@@ -22,6 +23,7 @@
         <th>{{ $studentInfo->id }}</th>
         <td>{{ $studentInfo->name }}</td>
         <td>{{ $studentInfo->email }}</td>
+        <td>{{ $studentInfo->s_phone }}</td>
         <td><a href="{{ url('register/view-details-student-info',$studentInfo) }}">View Details</a></td>
     </tr>
       @endforeach
