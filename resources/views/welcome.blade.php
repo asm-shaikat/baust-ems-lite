@@ -22,7 +22,7 @@
 
     <title>@yield('title')</title>
 </head>
-<body>
+<body class="dark:bg-white">
     @yield('navbar')
     <div style="margin-left:auto">
     @yield('content')
