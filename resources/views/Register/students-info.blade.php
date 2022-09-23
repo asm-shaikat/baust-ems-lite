@@ -4,8 +4,9 @@
 <!-- Navbar -->
 @include('Register.navbar')
 @section('content')
-<div class="overflow-x-auto">
-  <table class="table w-full">
+<div class="overflow-x-auto  w-full">
+    <p class="w-50 ml-60 text-center font-bold text-2xl">All Students</p>
+  <table class="table w-50 ml-72 absolute">
     <!-- head -->
     <thead>
       <tr>
