@@ -24,7 +24,9 @@
 </head>
 <body>
     @yield('navbar')
+    <div style="margin-left:auto">
     @yield('content')
+    </div>
 </body>
 
 </html>

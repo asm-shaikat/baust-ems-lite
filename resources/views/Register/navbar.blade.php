@@ -1,20 +1,19 @@
 <body id="body-pd">
-    
-    <div class="l-navbar" id="nav-bar">
+    <div class="l-navbar w-auto bg-slate-800" id="nav-bar">
         <nav class="nav">
-            <div> <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">BAUST</span> </a>
+            <div class=""> <a href="#" class="nav_logo"> <img align="center" class="w-14 mb-0 mx-0" src="../images/BAUST.png"><div class="text-white font-bold">BAUST</div> </a>
                 <div class="nav_list">
-                    <a href="/register/addemployees" class="nav_link"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Add New Employee</span> </a>
-                    <a href="/register/profile" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">Profile</span> </a>
-                    <a href="/register/view-students-info" class="nav_link"> <i class='bx bx-message-square-detail nav_icon'></i> <span class="nav_name">Messages</span> </a>
-                    <a href="#" class="nav_link"> <i class='bx bx-bookmark nav_icon'></i> <span class="nav_name">Bookmark</span> </a>
-                    <a href="#" class="nav_link"> <i class='bx bx-folder nav_icon'></i> <span class="nav_name">Files</span> </a>
-                    <a href="#" class="nav_link"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Stats</span> </a>
+                    <a href="/register/addemployees" class="nav_link"> <i class='bx bx-grid-alt nav_icon text-white'></i> <span class="nav_name text-white">Add New Employee</span> </a>
+                    <a href="/register/profile" class="nav_link"> <i class='bx bx-user nav_icon text-white'></i> <span class="nav_name text-white">Profile</span> </a>
+                    <a href="/register/view-students-info" class="nav_link"> <i class='bx bx-message-square-detail nav_icon text-white text-white'></i> <span class="nav_name text-white">Messages</span> </a>
+                    <a href="/register/search" class="nav_link"> <i class='bx bx-search nav_icon text-white'></i> <span class="nav_name text-white">Search</span> </a>
+                    <a href="#" class="nav_link"> <i class='bx bx-folder nav_icon text-white'></i> <span class="nav_name text-white">Files</span> </a>
+                    <a href="#" class="nav_link"> <i class='bx bx-bar-chart-alt-2 nav_icon text-white'></i> <span class="nav_name text-white">Stats</span> </a>
                 </div>
             </div>
             <form action="{{ url('/logout') }}" method="post">
                 @csrf
-                <button type="submit" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">SignOut</span> </button>
+                <button type="submit" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name text-red-400">SignOut</span> </button>
             </form>
         </nav>
     </div>
