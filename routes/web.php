@@ -30,7 +30,7 @@ Route::get('/register/setting',[RegisterController::class,'viewRegisterSetting']
 // temp registration of register
 Route::get('/viewregister',[MemberController::class,'viewregister']);
 Route::post('/register',[MemberController::class,'register']);
-
+Route::get('/register/home',[RegisterController::class,'viewregisterhome']);
 //  viewing registration dashboard
 // Route::get('/view-register-dashboard',[MemberController::class,'login']);
 

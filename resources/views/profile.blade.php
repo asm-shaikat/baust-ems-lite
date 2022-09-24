@@ -6,7 +6,7 @@
 
 <!-- Showing title name dynamically -->
 @section('title','Profile')
-
+<div align="center">
 @section('content')
 <!-- component -->
 <style>
@@ -197,3 +197,4 @@
     </div>
 </div>
 @endsection
+</div>

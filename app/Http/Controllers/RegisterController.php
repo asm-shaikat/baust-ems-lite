@@ -76,6 +76,9 @@ class RegisterController extends Controller{
         $data = DB::table('students')->where('id',$id)->get();
         return view('Register.students-info-details',compact('data'));
     }
-    
+    public function viewregisterhome()
+    {
+        return view('Register.home');
+    }
    
 }
