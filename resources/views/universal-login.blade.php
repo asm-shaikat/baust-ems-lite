@@ -16,14 +16,14 @@
         <div class=" bg-slate-300  px-10 py-8 rounded-xl w-screen shadow-md max-w-sm z-0 ">
             <img class="h-24 mb-4 mx-auto" src="/images/BAUST.png" alt="">
             <div class="space-y-4">
-                <h1 class="text-center text-2xl font-semibold text-white">Login</h1>
+                <h1 class="text-center text-2xl font-semibold text-black">Login</h1>
                 <div class="pb-8">
-                    <label for="email" class="block mb-1 text-white font-semibold">Email</label>
+                    <label for="email" class="block mb-1 text-black font-semibold">Email</label>
                     <input type="text" class="bg-indigo-50 px-4 py-2 outline-none rounded-md w-full" name="email" placeholder="Enter email address"/>
                     <p class="text-red-500"><b>@error('email') {{$message}}  @enderror</b></p>
                 </div>
                 <div class="pb-8">
-                    <label for="password" class="block mb-1 text-white font-semibold">Password</label>
+                    <label for="password" class="block mb-1 text-black font-semibold">Password</label>
                     <input type="password" class="bg-indigo-50 px-4 py-2 outline-none rounded-md w-full" name="password" placeholder="Enter your password"/>
                     <p class="text-red-500"><b>@error('password') {{ $message }}  @enderror</b></p>
                 </div>

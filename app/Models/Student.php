@@ -33,6 +33,7 @@ class Student extends Model
         'password',
         'user_type',
         'active',
+        'concatanate',
     ];
     
     use HasFactory;
