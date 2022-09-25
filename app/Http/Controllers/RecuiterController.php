@@ -92,6 +92,7 @@ class RecuiterController extends Controller
         $recuit_student->password = Hash::make($request->has('password') ? $request->get('password') : " ");       
         $recuit_student->user_type = "student";
         $recuit_student->active = $request->has('active') ? $request->get('active') :"";
+        $recuit_student->concatanate = $request->get('d_id').$request->get('name').$request->get('email').$request->get('dept').$request->get('s_phone').$request->get('blood');
         $recuit_student->save();
         
 

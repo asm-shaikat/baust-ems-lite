@@ -44,6 +44,9 @@ Route::get('/register/profile',[LoginController::class,'Profile'])->name('regist
 Route::get('/register/view-students-info',[RegisterController::class,'view_students_info']);
 Route::get('/register/view-details-student-info/{id}',[RegisterController::class,'view_details_student_info']);
 Route::get('/register/show-details-student-info',[RegisterController::class,'show_details_student_info']);
+// Search from Register
+Route::get('/register/search',[RegisterController::class,'search_student_info']);
+Route::post('/register/search/result',[RegisterController::class,'result_search_student_info']);
 
 // Add new employees 
 Route::get('/register/addemployees',[RegisterController::class,'viewaddEmployees']);

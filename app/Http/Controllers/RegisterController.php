@@ -80,5 +80,24 @@ class RegisterController extends Controller{
     {
         return view('Register.home');
     }
+
+    public function search_student_info(){
+        $searchResult = Student::all();
+        return view('Register.search',compact('searchResult'));
+    }
+
+    public function result_search_student_info(Request $request){
+        $searchKey = $request->has('search') ? $request->get('search') : "";
+        $searchResult = DB::table('students')
+        ->where('concatanate','LIKE','%'.$searchKey.'%')
+        ->get();
+        if(count($searchResult)>=1){
+            return view('Register.search',compact('searchResult'));
+        }
+        else{
+            return back()->with('failed','No search results found');
+        }
+        
+    }
    
 }
