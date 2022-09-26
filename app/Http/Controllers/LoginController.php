@@ -38,7 +38,10 @@ class LoginController extends Controller{
             }
             else if($authUserInfo->user_type == 'register'){
                 // $getAllStudentdata = DB::table('students')->get()->all();
-                return view('Register.home');
+                $countCurrentStudent = DB::table('students')->where('active',1)->count();
+                $countPassStudent = DB::table('students')->where('active',0)->count();
+
+                return view('Register.home',compact('countCurrentStudent','countPassStudent'));
             } 
             else if ($authUserInfo->user_type == 'recruiter') {
                 $getSessionUserEmail = Session('loggedUserEmail');

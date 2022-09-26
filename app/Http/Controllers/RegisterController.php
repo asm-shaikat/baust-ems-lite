@@ -99,5 +99,9 @@ class RegisterController extends Controller{
         }
         
     }
+    public function registerDashboard(Request $request){
+        return view('Register.home',compact('count'));
+    }
+
    
 }
