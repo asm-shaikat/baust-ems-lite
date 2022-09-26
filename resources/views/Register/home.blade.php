@@ -22,7 +22,7 @@
         <table>
             <tr>
                 <th>Current Students</th>
-                <th>Undergraduation Students</th>
+                <th>Undergraduate Students</th>
             </tr>
             <tr>
                 <th>{{ $countCurrentStudent }}</th>
