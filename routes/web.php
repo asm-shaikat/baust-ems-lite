@@ -47,7 +47,8 @@ Route::get('/register/show-details-student-info',[RegisterController::class,'sho
 // Search from Register
 Route::get('/register/search',[RegisterController::class,'search_student_info']);
 Route::post('/register/search/result',[RegisterController::class,'result_search_student_info']);
-
+// Register dashboard
+Route::get('/register/home',[RegisterController::class,'registerDashboard']);
 // Add new employees 
 Route::get('/register/addemployees',[RegisterController::class,'viewaddEmployees']);
 Route::post('/register/sendemployeedata',[RegisterController::class,'addEmployees']);
