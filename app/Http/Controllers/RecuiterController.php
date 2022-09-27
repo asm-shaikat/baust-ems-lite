@@ -37,8 +37,8 @@ class RecuiterController extends Controller
         {
             $year = $request->has('year') ? $request->get('year') :"";
             $semester = $request->has('semester') ? $request->get('semester') :"";
-            $get_id = DB::table('students')->select('*')->count()->where([['dept','=',$request->dept],['batch','=',intval($request->batch)]])->first();
-            $newid = $get_id[0][0]+1;
+            $get_id = DB::table('students')->where('dept','=',$request->dept)->where('batch','=',$request->batch)->count();
+            $newid = $get_id + 1;
 
             $dept_code = "01";
             if($dept == "CSE")
