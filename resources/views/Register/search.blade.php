@@ -24,7 +24,7 @@
     </div>
   </form>
   <div class="overflow-x-auto">
-    <table class="table w-full">
+    <table class="table w-full bg-teal-800 text-white">
       <!-- head -->
       <thead>
         <tr>

@@ -6,7 +6,7 @@
 @include('Register.navbar')
 
 @section('content')
-<div class="ml-96 -mt-32 h-auto pb-10">
+<div class="ml-80 -mt-32 h-auto pb-10 dark:text-white ">
     @if(Session::get('success'))
     {{ session::get('success') }}
     @endif

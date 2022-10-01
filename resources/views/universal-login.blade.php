@@ -9,7 +9,7 @@
 <!-- component -->
 
 
-<div class="h-full flex justify-center items-center  w-full mt-36 -ml-20">
+<div class="h-full flex justify-center items-center  w-full mt-100 -ml-20">
 
     <form action="{{ route('auth.login') }}" method="post" enctype="multipart/form">
         @csrf
