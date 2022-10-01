@@ -21,6 +21,7 @@
     <p>Mother's name: {{ $data->m_name }}</p>
     <p>Mother's contact: {{ $data->m_phone }}</p>
 
+    
   </div> 
 </div>
 @endforeach
