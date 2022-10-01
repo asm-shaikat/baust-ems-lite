@@ -5,8 +5,8 @@
 @include('Register.navbar')
 @section('content')
 <div class="overflow-x-auto  w-full">
-    <p class="w-50 ml-60 text-center font-bold text-2xl">All Students</p>
-  <table class="table w-50 ml-72 absolute">
+    <p class="w-50 ml-60 text-center font-bold text-2xl dark:text-white">All Students</p>
+  <table class="table w-50 ml-72 absolute bg-teal-800 text-white">
     <!-- head -->
     <thead>
       <tr>
@@ -31,4 +31,5 @@
     </tbody>
   </table>
 </div>
+
 @endsection
