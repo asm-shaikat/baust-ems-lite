@@ -22,9 +22,9 @@
     <script src="https://code.iconify.design/iconify-icon/1.0.0/iconify-icon.min.js"></script>
     <title>@yield('title')</title>
 </head>
-<body class="dark:bg-white">
+<body class="bg-inherit text-inharit">
     @yield('navbar')
-    <div style="margin-left:auto">
+    <div style="margin-left:auto;">
     @yield('content')
     </div>
 </body>
