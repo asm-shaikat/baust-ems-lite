@@ -59,10 +59,10 @@ Route::get('/recruiter/home',[LoginController::class,'login']);
 
 Route::get('/recruiter/add-student',[LoginController::class,'add_student']);
 
-Route::get('/recruiter/update-Students-info',[LoginController::class,'update_Students_info']);
+Route::get('/recruiter/update-Students-info',[RecuiterController::class,'update_Students_info']);
 
-Route::get('/recruiter/update-Students-info-details/{id}',[LoginController::class,'update_Students_info_details']);
-Route::post('/recruiter/send-update-Students-info-details/{id}',[LoginController::class,'send_update_Students_info_details']);
+Route::get('/recruiter/update-Students-info-details/{id}',[RecuiterController::class,'update_Students_info_details']);
+Route::post('/recruiter/send-update-Students-info-details/{id}',[RecuiterController::class,'send_update_Students_info_details']);
 
 // Logout
 Route::post('/logout',[LoginController::class,'logout']);

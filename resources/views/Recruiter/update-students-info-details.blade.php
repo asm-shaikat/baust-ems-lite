@@ -17,7 +17,7 @@
     @endif
 </div>
 <div class="flex justify-center my-2 mx-4 md:mx-0">
-   <form class="w-full max-w-xl bg-white rounded-lg shadow-md p-6" action="{{ url('/recruiter/send-update-Students-info-details/'.$studentId->id) }}" method="post" enctype="multipart/form">
+   <form class="w-full max-w-xl bg-white rounded-lg shadow-md p-6" action="{{ url('/recruiter/send-update-Students-info-details/'.$studentId->id) }}" method="POST" enctype="multipart/form">
       @csrf
       <div class="flex flex-wrap -mx-3 mb-6">
          <div class="w-full md:w-full px-3 mb-6">
@@ -147,11 +147,11 @@
             <input type='email' value="{{ $studentId->email}}" name="email" class="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-2 px-3 leading-tight focus:outline-none" required>
             <small class="text-red-700">@error('email') {{$message}}  @enderror</small>
          </div> -->
-         <div class="w-full md:w-full px-3 mb-6">
+         <!-- <div class="w-full md:w-full px-3 mb-6">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for='Password'>Password</label>
             <input name="password" class="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-2 px-3 leading-tight focus:outline-none" type='password' required>
             <small class="text-red-700">@error('password') {{$message}}  @enderror</small>
-         </div>
+         </div> -->
          <div class="w-full md:w-full px-3 mb-6">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for='Active'>Active</label>
             <select class="form-select" name="active" aria-label="Default select example">
