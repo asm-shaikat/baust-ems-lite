@@ -38,11 +38,24 @@ class LoginController extends Controller{
                 return view('Public.publicpage');
             }
             else if($authUserInfo->user_type == 'register'){
-                // $getAllStudentdata = DB::table('students')->get()->all();
-                $countCurrentStudent = DB::table('students')->where('active',1)->count();
-                $countPassStudent = DB::table('students')->where('active',0)->count();
-
-                return view('Register.home',compact('countCurrentStudent','countPassStudent'));
+                $countCurrentStudentCSE = DB::table('students')->where('active', 1)->where('dept', "CSE")->count();
+                $countPassStudentCSE = DB::table('students')->where('active', 0)->where('dept', "CSE")->count();
+                $countCurrentStudentEEE= DB::table('students')->where('active', 1)->where('dept', "EEE")->count();
+                $countPassStudentEEE = DB::table('students')->where('active', 0)->where('dept', "EEE")->count();
+                $countCurrentStudentME = DB::table('students')->where('active', 1)->where('dept', "ME")->count();
+                $countPassStudentME = DB::table('students')->where('active', 0)->where('dept', "ME")->count();
+                $countCurrentStudentICT = DB::table('students')->where('active', 1)->where('dept', "ICT")->count();
+                $countPassStudentICT = DB::table('students')->where('active', 0)->where('dept', "ICT")->count();
+                $countCurrentStudentCE = DB::table('students')->where('active', 1)->where('dept', "CE")->count();
+                $countPassStudentCE = DB::table('students')->where('active', 0)->where('dept', "CE")->count();
+                $countCurrentStudentIPE = DB::table('students')->where('active', 1)->where('dept', "IPE")->count();
+                $countPassStudentIPE = DB::table('students')->where('active', 0)->where('dept', "IPE")->count();
+                $countCurrentStudentBBA = DB::table('students')->where('active', 1)->where('dept', "BBA")->count();
+                $countPassStudentBBA = DB::table('students')->where('active', 0)->where('dept', "BBA")->count();
+                $countCurrentStudentENGLISH = DB::table('students')->where('active', 1)->where('dept', "ENGLISH")->count();
+                $countPassStudentENGLISH = DB::table('students')->where('active', 0)->where('dept', "ENGLISH")->count();
+                
+                return view('Register.home', compact('countCurrentStudentCSE', 'countPassStudentCSE','countCurrentStudentEEE', 'countPassStudentEEE','countCurrentStudentME', 'countPassStudentME','countCurrentStudentICT', 'countPassStudentICT','countCurrentStudentCE', 'countPassStudentCE','countCurrentStudentIPE', 'countPassStudentIPE','countCurrentStudentBBA', 'countPassStudentBBA','countCurrentStudentENGLISH', 'countPassStudentENGLISH'));
             } 
             else if ($authUserInfo->user_type == 'recruiter') {
                 $getSessionUserEmail = Session('loggedUserEmail');
