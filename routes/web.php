@@ -6,9 +6,10 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\RecuiterController;
 use App\Http\Controllers\RegisterController;
+use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\Routing\Router as RoutingRouter;
 
- 
 Route::group(['middleware' => 'prevent-back-history'],function(){     //Start of preventBackHistory middleware
 	
 /* View Universal Login Page */
@@ -52,6 +53,13 @@ Route::get('/register/home',[RegisterController::class,'registerDashboard']);
 // Add new employees 
 Route::get('/register/addemployees',[RegisterController::class,'viewaddEmployees']);
 Route::post('/register/sendemployeedata',[RegisterController::class,'addEmployees']);
+
+// View employees from regiater
+Route::get('/register/view-employees',[RegisterController::class,'viewemployees']);
+
+//view for update employees info from register
+ 
+Route::get('/register/employees-info/{id}',[RegisterController::class,'view_employees_info']);
 
 // Recruiter routes
 

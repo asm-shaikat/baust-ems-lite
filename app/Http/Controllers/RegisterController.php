@@ -62,6 +62,17 @@ class RegisterController extends Controller
         $login->save();
         return back()->with('success', "Employee added successfully");
     }
+
+    public function viewemployees(){
+        $data = DB::table('edetails')->get();
+        return view('Register.view-employees',compact('data'));
+    }
+    
+    public function view_employees_info($id){
+        $employeeId = DB::table('edetails')->where('id', $id)->get();
+        return view('Register.view-employees-details',compact('employeeId'));
+    }
+
     public function registerProfile()
     {
         return view('Register.profile');
