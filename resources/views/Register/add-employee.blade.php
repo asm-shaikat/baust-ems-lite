@@ -52,13 +52,19 @@
                             <label for="exampleFormControlInput1" class="form-label">Employee Department</label>
                             <select class="form-select" name="eDept" aria-label="Default select example">
                                 <option selected>Select a department</option>
-                                <option value="cse">CSE</option>
-                                <option value="eee">EEE</option>
-                                <option value="me">ME</option>
-                                <option value="ce">CE</option>
-                                <option value="ip">IP</option>
-                                <option value="bba">BBA</option>
-                                <option value="english">English</option>
+                                <option value="Admission Office">Admission Office</option>
+                                <option value="Exam Controller Office">Exam Controller Office</option>
+                                <option value="Register Office">Register Office</option>
+                                <option value="Accounts Office">Accounts Office</option>
+                                <option value="Treasure Office">Treasurer Office</option>
+                                <option value="CSE">CSE</option>
+                                <option value="EEE">EEE</option>
+                                <option value="ME">ME</option>
+                                <option value="CE">CE</option>
+                                <option value="IPE">IPE</option>
+                                <option value="DBA">DBA</option>
+                                <option value="FSH">FSH</option>
+                                <option value="ICT">ICT</option>
                             </select>
                             <small class="text-red-700">@error('eDept') {{$message}}  @enderror</small>
 
