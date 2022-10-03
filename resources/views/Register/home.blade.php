@@ -17,7 +17,22 @@
 </style>
 
 <div class="flex">
-    
+    <div class="card card-compact w-96 bg-base-100 shadow-xl row-span-3 mr-10 mb-10">
+    <div class="card-body">
+        <h2 class="card-title">Employee<h2>
+        <table>
+            <tr>
+                <th>Current Employees</th>
+                <th>Left Job</th>
+            </tr>
+            <tr>
+                <th>{{ $countCurrentEmployees }}</th>
+                <th>{{ $countLeaveEmployees }}</th>
+            </tr>            
+        </table>
+    </div>
+    </div>    
+
     <div class="card card-compact w-96 bg-base-100 shadow-xl row-span-3 mr-10 mb-10">
     <div class="card-body">
         <h2 class="card-title">CSE Department's Students<h2>
@@ -48,7 +63,11 @@
         </table>
     </div>
     </div>
-    <div class="card card-compact w-96 bg-base-100 shadow-xl row-span-3 mr-10 mb-10">
+    
+</div>
+<div class="flex">
+
+<div class="card card-compact w-96 bg-base-100 shadow-xl row-span-3 mr-10 mb-10">
     <div class="card-body">
         <h2 class="card-title">ME Department's Students<h2>
         <table>
@@ -63,9 +82,8 @@
         </table>
     </div>
     </div>
-</div>
-<div class="flex">
-    
+
+
     <div class="card card-compact w-96 bg-base-100 shadow-xl row-span-3 mr-10 mb-10">
     <div class="card-body">
         <h2 class="card-title">ICT Department's Students<h2>
@@ -96,6 +114,11 @@
         </table>
     </div>
     </div>
+</div>
+
+<div class="flex">
+    
+
     <div class="card card-compact w-96 bg-base-100 shadow-xl row-span-3 mr-10 mb-10">
     <div class="card-body">
         <h2 class="card-title">IPE Department's Students<h2>
@@ -111,10 +134,7 @@
         </table>
     </div>
     </div>
-</div>
 
-<div class="flex">
-    
     <div class="card card-compact w-96 bg-base-100 shadow-xl row-span-3 mr-10 mb-10">
     <div class="card-body">
         <h2 class="card-title">BBA Department's Students<h2>
@@ -130,6 +150,7 @@
         </table>
     </div>
     </div>
+
     <div class="card card-compact w-96 bg-base-100 shadow-xl row-span-3 mr-10 mb-10">
     <div class="card-body">
         <h2 class="card-title">ENGLISH Department's Students<h2>

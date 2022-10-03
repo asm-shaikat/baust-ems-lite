@@ -107,7 +107,9 @@ class RegisterController extends Controller
     }
     public function registerDashboard(Request $request)
     {
-            $countCurrentStudentCSE = DB::table('students')->where('active', 1)->where('dept', "CSE")->count();
+                $countCurrentEmployees = DB::table('edetails')->where('active', 1)->count();
+                $countLeaveEmployees = DB::table('edetails')->where('active', 0)->count();
+                $countCurrentStudentCSE = DB::table('students')->where('active', 1)->where('dept', "CSE")->count();
                 $countPassStudentCSE = DB::table('students')->where('active', 0)->where('dept', "CSE")->count();
                 $countCurrentStudentEEE= DB::table('students')->where('active', 1)->where('dept', "EEE")->count();
                 $countPassStudentEEE = DB::table('students')->where('active', 0)->where('dept', "EEE")->count();
@@ -124,7 +126,7 @@ class RegisterController extends Controller
                 $countCurrentStudentENGLISH = DB::table('students')->where('active', 1)->where('dept', "ENGLISH")->count();
                 $countPassStudentENGLISH = DB::table('students')->where('active', 0)->where('dept', "ENGLISH")->count();
                 
-                return view('Register.home', compact('countCurrentStudentCSE', 'countPassStudentCSE','countCurrentStudentEEE', 'countPassStudentEEE','countCurrentStudentME', 'countPassStudentME','countCurrentStudentICT', 'countPassStudentICT','countCurrentStudentCE', 'countPassStudentCE','countCurrentStudentIPE', 'countPassStudentIPE','countCurrentStudentBBA', 'countPassStudentBBA','countCurrentStudentENGLISH', 'countPassStudentENGLISH'));
+                return view('Register.home', compact('countCurrentEmployees','countLeaveEmployees','countCurrentStudentCSE', 'countPassStudentCSE','countCurrentStudentEEE', 'countPassStudentEEE','countCurrentStudentME', 'countPassStudentME','countCurrentStudentICT', 'countPassStudentICT','countCurrentStudentCE', 'countPassStudentCE','countCurrentStudentIPE', 'countPassStudentIPE','countCurrentStudentBBA', 'countPassStudentBBA','countCurrentStudentENGLISH', 'countPassStudentENGLISH'));
            
     }
 }
