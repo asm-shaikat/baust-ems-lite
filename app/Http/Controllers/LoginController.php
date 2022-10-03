@@ -66,6 +66,13 @@ class LoginController extends Controller{
                 return view('Recruiter.recruiter-dashboard',compact('data'));
             }
 
+            else{
+                $getSessionUserEmail = Session('loggedUserEmail');
+                $send_data = DB::table('edetails')->select("*")->where('email', $getSessionUserEmail)->get();
+                $data = json_decode($send_data);
+                return view('Employee.home',compact('data'));
+            }
+
         }
     }
     // Logout user
