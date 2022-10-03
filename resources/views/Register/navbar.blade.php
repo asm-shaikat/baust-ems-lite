@@ -8,7 +8,7 @@
                     <a href="/register/profile" class="nav_link" title="Profile"> <i class='bx bx-user nav_icon text-white'></i> <span class="nav_name text-white">Profile</span> </a>
                     <a href="/register/view-students-info" class="nav_link" title="View Student Info"> <i class='bx bx-message-square-detail nav_icon text-white text-white'></i> <span class="nav_name text-white">Students</span> </a>
                     <a href="/register/search" class="nav_link" title="Search"> <i class='bx bx-search nav_icon text-white'></i> <span class="nav_name text-white">Search</span> </a>
-                    <a href="#" class="nav_link"> <i class='bx bx-folder nav_icon text-white'></i> <span class="nav_name text-white">Files</span> </a>
+                    <a href="/register/view-employees" class="nav_link"> <i class='bx bx-folder nav_icon text-white'></i> <span class="nav_name text-white">Files</span> </a>
                     <a href="#" class="nav_link"> <i class='bx bx-bar-chart-alt-2 nav_icon text-white'></i> <span class="nav_name text-white">Stats</span> </a>
                 </div>
             </div>
