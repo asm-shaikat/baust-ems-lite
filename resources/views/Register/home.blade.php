@@ -26,7 +26,7 @@
         <th>Father's Name</th>
         <th>Father's Contact</th>
         <th>Mother's Name</th>
-        <th>Mother's COntact</th>
+        <th>Mother's Contact</th>
       </tr>
     </thead>
     <tbody>
