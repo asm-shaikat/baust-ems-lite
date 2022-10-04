@@ -6,14 +6,14 @@
 @include('Register.navbar')
 
 @section('content')
-<div class="ml-96">
+<div class="ml-80 -mt-32 h-auto pb-10 dark:text-white ">
     @if(Session::get('success'))
     {{ session::get('success') }}
     @endif
     <form action="/register/sendemployeedata" method="post" enctype="multipart/form-data">
-                <p class="text-4xl text-yellow-700 font-extrabold ml-52">ADD EMPLOYEES</p>
+                <p class="text-4xl text-yellow-700 font-extrabold ml-52 mt-32 p-10">ADD EMPLOYEES</p>
                 @csrf
-                <div class="form-parent flex ">
+                <div class="form-parent flex w-70">
                     <div class="form-1 ">
                         <div class="mb-3 mr-32 w-96">
                             <label for="exampleFormControlInput1" class="form-label">Email Address</label>
@@ -52,13 +52,19 @@
                             <label for="exampleFormControlInput1" class="form-label">Employee Department</label>
                             <select class="form-select" name="eDept" aria-label="Default select example">
                                 <option selected>Select a department</option>
-                                <option value="cse">CSE</option>
-                                <option value="eee">EEE</option>
-                                <option value="me">ME</option>
-                                <option value="ce">CE</option>
-                                <option value="ip">IP</option>
-                                <option value="bba">BBA</option>
-                                <option value="english">English</option>
+                                <option value="Admission Office">Admission Office</option>
+                                <option value="Exam Controller Office">Exam Controller Office</option>
+                                <option value="Register Office">Register Office</option>
+                                <option value="Accounts Office">Accounts Office</option>
+                                <option value="Treasure Office">Treasurer Office</option>
+                                <option value="CSE">CSE</option>
+                                <option value="EEE">EEE</option>
+                                <option value="ME">ME</option>
+                                <option value="CE">CE</option>
+                                <option value="IPE">IPE</option>
+                                <option value="DBA">DBA</option>
+                                <option value="FSH">FSH</option>
+                                <option value="ICT">ICT</option>
                             </select>
                             <small class="text-red-700">@error('eDept') {{$message}}  @enderror</small>
 
@@ -124,13 +130,12 @@
 
                     </div>
                 </div>
-                <div class="mb-3 w-full">
+                <div class="mb-3" style="width: 900px;">
                     <label for="exampleFormControlInput1" class="form-label">Education</label>
                     <textarea class="form-control" name="education" id="exampleFormControlTextarea1" rows="3"></textarea>
                     <small class="text-red-700">@error('education') {{$message}}  @enderror</small>
-
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary mb-10">Submit</button>
             </form>
 </div>
 @endsection
