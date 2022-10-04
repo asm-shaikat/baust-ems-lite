@@ -65,6 +65,12 @@ class LoginController extends Controller{
                 $data = json_decode($send_data);
                 return view('Recruiter.recruiter-dashboard',compact('data'));
             }
+            else if ($authUserInfo->user_type == 'professor') {
+                $getSessionUserEmail = Session('loggedUserEmail');
+                $send_data = DB::table('edetails')->select("*")->where('email', $getSessionUserEmail)->get();
+                $data = json_decode($send_data);
+                return view('Department.home',compact('data'));
+            }
 
             else{
                 $getSessionUserEmail = Session('loggedUserEmail');
