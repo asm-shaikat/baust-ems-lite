@@ -9,27 +9,27 @@
 <!-- component -->
 
 
-<div class="h-full flex justify-center items-center  w-full mt-100 -ml-20">
+<div class="h-auto flex justify-center items-center w-auto">
 
     <form action="{{ route('auth.login') }}" method="post" enctype="multipart/form">
         @csrf
-        <div class=" bg-slate-300  px-10 py-8 rounded-xl w-screen shadow-md max-w-sm z-0 ">
-            <img class="h-24 mb-4 mx-auto" src="/images/BAUST.png" alt="">
+        <div class="bg-slate-700 px-6 py-4 rounded-xl w-screen shadow-md max-w-sm z-0 font-serif font-family:ui-serif">
+            <img class="h-24 mb-4 mx-auto" src="/images/BAUST.png" alt="BAUST_Logo">
             <div class="space-y-4">
-                <h1 class="text-center text-2xl font-semibold text-black">Login</h1>
-                <div class="pb-8">
-                    <label for="email" class="block mb-1 text-black font-semibold">Email</label>
+                <h1 class="text-center text-4xl text-white pb-3">BAUST EMS CONNECT</h1>
+                <div class="">
+                    <label for="email" class="block mb-1 text-white">Email</label>
                     <input type="text" class="bg-indigo-50 px-4 py-2 outline-none rounded-md w-full" name="email" placeholder="Enter email address"/>
-                    <p class="text-red-500"><b>@error('email') {{$message}}  @enderror</b></p>
+                    <p class="text-red-500"><b></b></p>
                 </div>
-                <div class="pb-8">
-                    <label for="password" class="block mb-1 text-black font-semibold">Password</label>
+                <div class="">
+                    <label for="password" class="block mb-1 text-white">Password</label>
                     <input type="password" class="bg-indigo-50 px-4 py-2 outline-none rounded-md w-full" name="password" placeholder="Enter your password"/>
                     <p class="text-red-500"><b>@error('password') {{ $message }}  @enderror</b></p>
                 </div>
             </div>
                 <div class="pb-8">
-                <button class="mt-4 w-full bg-yellow-300 font-semibold py-2 text-white  rounded-md  tracking-wide">Signin</button>
+                <button class="mt-4 w-full bg-blue-700 py-2 text-white rounded-md tracking-wide">Sign In</button>
                 </div>
         </div>
     </form>

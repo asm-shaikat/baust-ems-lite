@@ -26,8 +26,12 @@ class LoginController extends Controller{
             'password' => 'required|min:5',
         ]);
         $authUserInfo = Login::where('email',$request->email)->first();
-        if(!$authUserInfo && !Hash::check($request->password,$authUserInfo->password)){
-            return back()->with('loginfailed','Invalid credentials');
+        if(!$authUserInfo)
+        {
+            return back()->with('loginfailed', 'Email Does Not Exist');
+        }
+        else if($authUserInfo && !Hash::check($request->password,$authUserInfo->password)){
+            return back()->with('loginfailed','Wrong Password');
         }
         else{
               $request->session()->put('loggedUserEmail',$authUserInfo->email);             
@@ -65,7 +69,10 @@ class LoginController extends Controller{
                 $data = json_decode($send_data);
                 return view('Recruiter.recruiter-dashboard',compact('data'));
             }
-            else if ($authUserInfo->user_type == 'professor') {
+            else if ($authUserInfo->user_type == 'professor' or 
+                     $authUserInfo->user_type == 'lecturer' or 
+                     $authUserInfo->user_type == 'dean' or 
+                     $authUserInfo->user_type == 'head') {
                 $getSessionUserEmail = Session('loggedUserEmail');
                 $send_data = DB::table('edetails')->select("*")->where('email', $getSessionUserEmail)->get();
                 $data = json_decode($send_data);
