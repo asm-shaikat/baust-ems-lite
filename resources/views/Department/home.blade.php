@@ -8,7 +8,7 @@
     @vite('resources/css/app.css')
     <title>Home</title>
 </head>
-<body>
+<body id="body-pd">
 <div class="l-navbar" id="nav-bar">
 <div class="flex flex-col w-64 h-screen py-8 bg-dark border-r dark:bg-gray-900 dark:border-gray-700">
     
@@ -55,10 +55,9 @@
             </a>
         </nav>
     </div>
-
 </div>
 </div>
-<div class="">
+ <div class="flex">
     Testdfvdffsdsddafsdadsdfdsfdssdfdssfdfsdfgsdfsfdfsfgfdsdfsfgsdsdgfsdfdsgdfsfdssfhgdsgfdsfdsdsgsdfdsgfdsfsdfsd
 </div>
 </body>
