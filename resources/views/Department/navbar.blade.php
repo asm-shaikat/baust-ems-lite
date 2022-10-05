@@ -1,6 +1,6 @@
 <div class="l-navbar flex" id="nav-bar">
 <div class="flex flex-col w-64 h-screen py-8 bg-dark border-r dark:bg-gray-900 dark:border-gray-700">
-    <h2 class="text-3xl font-semibold text-center text-gray-800 dark:text-white">BAUST</h2>
+    <h2 class="text-3xl font-semibold text-center text-gray-800 dark:text-white"><img class="h-10 mb-4 mx-auto" src="/images/InstituteLogoColorFull.png" alt="BAUST_Logo"></h2>
     <div class="flex flex-col items-center mt-6 -mx-2">
         <img class="object-cover w-24 h-24 mx-2 rounded-full" src="/images/profile-avatar.jpg" alt="avatar">
         <h4 class="mx-2 mt-2 font-medium text-gray-800 dark:text-gray-200 hover:underline">{{ $data[0]->name }}</h4>
