@@ -114,4 +114,18 @@ class RecuiterController extends Controller
         ]);
         dd($studentId);
     }
+    public function department_profile(Request $request)
+    {
+        $getSessionUserEmail = Session('loggedUserEmail');
+        $send_data = DB::table('edetails')->select("*")->where('email',$getSessionUserEmail)->get();
+        $data = json_decode($send_data);
+        return view('Department.profile',compact('data'));
+    }
+    public function department_home()
+    {
+        $getSessionUserEmail = Session('loggedUserEmail');
+        $send_data = DB::table('edetails')->select("*")->where('email',$getSessionUserEmail)->get();
+        $data = json_decode($send_data);
+        return view('Department.home',compact('data'));
+    }
 }
