@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Edetail;
 use App\Models\Login;
 use App\Models\Student;
+use Illuminate\Auth\Events\Login as EventsLogin;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
-
+use Symfony\Component\Console\Input\Input;
+use Termwind\Components\Dd;
 
 class RecuiterController extends Controller
 {
@@ -107,12 +111,17 @@ class RecuiterController extends Controller
     public function send_update_Students_info_details(Request $request, $id)
     {
         $studentId = Student::find($id);
-        $request->validate([
-            'email' => 'required|unique:students',
-            'password' => 'required|min:5|max:8',
-            's_phone' => 'required|max:11',
-        ]);
-        dd($studentId);
+        // $data = request()->except(['_token']);
+        // $studentLoginId = DB::table('logins')->select('id')->where('email',$studentId->email)->update($data);
+        // $request->validate([
+        //     'email' => 'required|unique:students',
+        //     's_phone' => 'required|max:11',
+        // ]);
+        // dd($studentLoginId);
+        $studentId->update($request->all());
+        // $studentLoginId->update($request->all());
+        // $studentLoginId->update($request->all());
+        return redirect()->back()->with('success', 'Student updated successfully');
     }
     public function department_profile(Request $request)
     {
@@ -128,4 +137,45 @@ class RecuiterController extends Controller
         $data = json_decode($send_data);
         return view('Department.home',compact('data'));
     }
+
+    public function department_profile_update(){
+        $getSessionUserEmail = Session('loggedUserEmail');
+        $send_data = DB::table('edetails')->select("*")->where('email',$getSessionUserEmail)->get();
+        $data = json_decode($send_data);
+        return view('Department.profile-update',compact('data'));
+    }
+
+    public function department_profile_update_data(Request $request){
+        // $employees_details = new Edetail();
+        // $login = new Login();
+        // $employees_details->fathersName = $request->has('fathersName') ? $request->get('fathersName') : " ";
+        // $employees_details->mothersName = $request->has('mothersName') ? $request->get('mothersName') : " ";
+        // $employees_details->nationalID = $request->has('nationalID') ? $request->get('nationalID') : " ";
+        // $employees_details->previousJob = $request->has('previousJob') ? $request->get('previousJob') : " ";
+        // $employees_details->name = $request->has('name') ? $request->get('name') : " ";
+        // $employees_details->email = $request->has('email') ? $request->get('email') : " ";
+        // $employees_details->phone = $request->has('phone') ? $request->get('phone') : " ";
+        // $employees_details->eDept = $request->has('eDept') ? $request->get('eDept') : " ";
+        // $employees_details->education = $request->has('education') ? $request->get('education') : " ";
+        // $employees_details->save();
+
+        // // Inserting into Login table
+        // $login->email = $employees_details->email;
+        // $login->phone = $employees_details->phone;
+        // $login->password = $employees_details->password;
+        // $login->user_type = $employees_details->post;
+        // $login->save();
+        // return back()->with('success', "Employee added successfully");
+        $getSessionUserEmail = Session('loggedUserEmail');
+        $send_data = DB::table('edetails')->select("*")->where('email',$getSessionUserEmail)->get();
+        // $data = json_decode($send_data);
+        // dd($data[0]->name);
+
+        // $employees_details->name = $request->session()->put('name', $request->input('name'));
+        // $employees_details->save();
+        // dd($request->session()->get('name'));  
+        dd($send_data);
+
+    }
+
 }

@@ -79,6 +79,12 @@ Route::post('/logout',[LoginController::class,'logout']);
 Route::post('/recruiter/send_add_student_data', [RecuiterController::class, 'send_add_student_data']);
 });  //end of preventBackHistory middleware 
 
+// Department routes
+
 //go to deparment profile page
 Route::get('/department/profile',[RecuiterController::class, 'department_profile']);
 Route::get('/department/home',[RecuiterController::class, 'department_home']);
+// Update profile info
+Route::get('/department/profile/update',[RecuiterController::class, 'department_profile_update']);
+
+Route::post('/department/profile/update/send',[RecuiterController::class, 'department_profile_update_data']);
