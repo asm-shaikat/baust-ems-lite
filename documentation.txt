@@ -4,6 +4,7 @@ Step-3: Run npm install vite
 Step-3: Run php artisan migrate
 Step-4: Run php artisan serve
 Step-5: Run npm run dev
-Step-6: Go to route http://127.0.0.1:8000/viewregister and fill e form
+Step-6: Go to route http://localhost:8000/register/addemployees and add employee
+//Step-6: Go to route http://127.0.0.1:8000/viewregister and fill e form 
 Step-7: Go to login table and set user_type = register
 Step-8: Login as register and add employee as register 
