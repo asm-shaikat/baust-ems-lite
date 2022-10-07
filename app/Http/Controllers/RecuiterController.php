@@ -111,13 +111,32 @@ class RecuiterController extends Controller
     public function send_update_Students_info_details(Request $request, $id)
     {
         $studentId = Student::find($id);
+        // $loginId = new Login();
         // $data = request()->except(['_token']);
-        // $studentLoginId = DB::table('logins')->select('id')->where('email',$studentId->email)->update($data);
+        // $studentLoginId = DB::table('logins')->select('*')->where('email',$studentId[0]->email)->get();
+        
+        //  finding email of student
+        // dd($studentId->email);
+        // $getLoginUserid = $studentId->email;
+        // DB::table('logins')->update([
+        //     'email' => $request->email,
+        //     'phone' => $request->phone,
+        // ]);
+
+        // dd(DB::table('logins')->select('*')->where('email',$getLoginUserid))->get();
+
+        // dd($studentLoginId[0]->email);
+        // $studentLoginId[0]->email = $request->email;
+        // $studentLoginId[0]->phone = $request->s_phone;
+        // $studentLoginId[0]->save();
+        // $request->session()->put($studentLoginId[0]->email,'=',$request->email,$studentLoginId[0]->phone,'=', $request->s_phone);
+        // return back();
         // $request->validate([
         //     'email' => 'required|unique:students',
         //     's_phone' => 'required|max:11',
         // ]);
         // dd($studentLoginId);
+        // $loginId->
         $studentId->update($request->all());
         // $studentLoginId->update($request->all());
         // $studentLoginId->update($request->all());

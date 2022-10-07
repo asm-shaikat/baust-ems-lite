@@ -5,8 +5,8 @@
 @include('Register.navbar')
 @section('content')
 @foreach($data as $data)
-<div class="w-full drop-shadow-lg">
-  <div class="h-auto card bg-base-300 rounded-box place-items-center">
+<div class="w-full drop-shadow-lg -mt-20 ">
+  <div class="h-screen rounded-box place-items-center text-white p-10 glass text-center w-3/5 ml-80">
       <p class="text-2xl">Student Information</p>
     <p>Full name: {{ $data->name }}</p>
     <p>Email: {{ $data->email }}</p>
@@ -20,8 +20,6 @@
     <p>Father's contact: {{ $data->f_phone }}</p>
     <p>Mother's name: {{ $data->m_name }}</p>
     <p>Mother's contact: {{ $data->m_phone }}</p>
-
-    
   </div> 
 </div>
 @endforeach

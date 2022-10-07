@@ -1,6 +1,6 @@
-<div class="navbar bg-cyan-500 -mt-14 -ml-24 w-auto">
+<div class="navbar bg-cyan-500 -mt-16 -ml-24 w-auto">
     <div class="flex-1">
-        <a class="btn btn-ghost normal-case text-xl text-white">BAUST</a>
+        <a class="btn btn-ghost normal-case text-xl text-white" href="{{ url('/recruiter/home') }}">Profile</a>
     </div>
     <div class="flex-none gap-2">
         <div class="form-control bg-slate-100">
@@ -14,7 +14,7 @@
             </label>
             <ul tabindex="0" class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-cyan-500 rounded-box w-52">
                 <li>
-                    <a class="justify-between text-white">
+                    <a class="justify-between text-white" href="{{ url('/recruiter/home') }}">
                         Profile
                         <span class="badge">New</span>
                     </a>

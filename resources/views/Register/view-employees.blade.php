@@ -4,12 +4,13 @@
 <!-- Navbar -->
 @include('Register.navbar')
 @section('content')
+<div class="-mt-16 p-4">
 <p class="w-full text-center text-2xl bg-cyan-500 text-white p-2">Employees</p>
 <div class="grid grid-cols-3 gap-4">
 
     @foreach($data as $data)
-    <div class=" ">
-        <div class="card w-80 glass absolute">
+    <div class="">
+        <div class=" card w-80 glass absolute">
             <!-- Choice 1 avater -->
             <div class="avatar offline ml-32 p-2">
                 <div class="w-20 rounded-full">
@@ -20,7 +21,7 @@
             <!--Choice 2 icon  -->
             <!-- <i class="fa-solid fa-circle-user fa-5x ml-32 p-4"></i> -->
 
-            <div class="card-body">
+            <div class="card-body text-black">
                 <p class="card-title">{{ $data->name }}</p>
                 <p class="text-uppercase">Designation: {{ $data->post }}</p>
                 <p class="text-uppercase">Phone : {{ $data->phone }}</p>
@@ -33,6 +34,7 @@
 
     </div>
     @endforeach
+</div>
 </div>
 
 @endsection

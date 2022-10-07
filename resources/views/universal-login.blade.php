@@ -9,11 +9,11 @@
 <!-- component -->
 
 
-<div class="h-auto flex justify-center items-center w-auto">
+<div class="h-screen flex justify-center items-center w-auto -mt-16">
 
     <form action="{{ route('auth.login') }}" method="post" enctype="multipart/form">
         @csrf
-        <div class="bg-slate-700 px-6 py-4 rounded-xl w-screen shadow-md max-w-sm z-0 font-serif font-family:ui-serif">
+        <div class="glass px-6 py-4 rounded-xl w-screen shadow-md max-w-sm z-0 font-serif font-family:ui-serif">
             <img class="h-24 mb-4 mx-auto" src="/images/BAUST.png" alt="BAUST_Logo">
             <div class="space-y-4">
                 <h1 class="text-center text-4xl text-white pb-3">BAUST EMS CONNECT</h1>

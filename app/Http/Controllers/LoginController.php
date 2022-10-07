@@ -88,6 +88,14 @@ class LoginController extends Controller{
 
         }
     }
+
+    
+    public function recruiter_profile(){
+        $getSessionUserEmail = Session('loggedUserEmail');
+        $send_data = DB::table('edetails')->select("*")->where('email', $getSessionUserEmail)->get();
+        $data = json_decode($send_data);
+        return view('Recruiter.recruiter-dashboard',compact('data'));
+    }
     // Logout user
     public function logout() {
         if(session()->has('loggedUser')){

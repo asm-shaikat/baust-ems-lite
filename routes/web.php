@@ -65,6 +65,10 @@ Route::get('/register/employees-info/{id}',[RegisterController::class,'view_empl
 
 Route::get('/recruiter/home',[LoginController::class,'login']);
 
+// Recruiter profile
+
+Route::get('/recruiter/home',[LoginController::class,'recruiter_profile']);
+
 Route::get('/recruiter/add-student',[LoginController::class,'add_student']);
 
 Route::get('/recruiter/update-Students-info',[RecuiterController::class,'update_Students_info']);

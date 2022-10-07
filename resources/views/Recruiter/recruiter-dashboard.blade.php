@@ -4,23 +4,23 @@
 @section('title','Recruiter')
 
 @section('content')
-<div class="bg-gray-100">
- <div class="w-full text-white bg-main-color">
+<div class="">
+ <div class="w-full text-white h-screen -mt-20">
       
     <div class="container mx-auto my-5 p-5">
-        <div class="md:flex no-wrap md:-mx-2 ">
+        <div class="md:flex no-wrap md:-mx-2">
             <!-- Left Side -->
             <div class="w-full md:w-3/12 md:mx-2">
                 <!-- Profile Card -->
-                <div class="bg-white p-3 border-t-4 border-green-400">
-                    <div class="image overflow-hidden">
-                        <img class="h-auto w-full mx-auto"
+                <div class="bg-slate-500 p-3 border-t-4 border-green-400">
+                    <div class="image overflow-hidden avatar">
+                        <img class="h-auto w-full mx-auto rounded-full"
                             src="/images/profile-avatar.jpg"
                             alt="">
                     </div>
-                    <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">{{ $data[0]->name }}</h1>
+                    <h1 class="text-white font-bold text-xl leading-8 my-1">{{ $data[0]->name }}</h1>
                     <ul
-                        class="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
+                        class=" text-white hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
                         <li class="flex items-center py-3">
                             <span>Status</span>
                             <span class="ml-auto"><span
@@ -33,54 +33,14 @@
                     </ul>
                 </div>
                 <!-- End of profile card -->
-                <div class="my-4"></div>
-                <!-- Friends card -->
-                <div class="bg-white p-3 hover:shadow">
-                    <div class="flex items-center space-x-3 font-semibold text-gray-900 text-xl leading-8">
-                        <span class="text-green-500">
-                            <svg class="h-5 fill-current" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                            </svg>
-                        </span>
-                        <span>Similar Profiles</span>
-                    </div>
-                    <div class="grid grid-cols-3">
-                        <div class="text-center my-2">
-                            <img class="h-16 w-16 rounded-full mx-auto"
-                                src="https://cdn.australianageingagenda.com.au/wp-content/uploads/2015/06/28085920/Phil-Beckett-2-e1435107243361.jpg"
-                                alt="">
-                            <a href="#" class="text-main-color">Kojstantin</a>
-                        </div>
-                        <div class="text-center my-2">
-                            <img class="h-16 w-16 rounded-full mx-auto"
-                                src="https://avatars2.githubusercontent.com/u/24622175?s=60&amp;v=4"
-                                alt="">
-                            <a href="#" class="text-main-color">James</a>
-                        </div>
-                        <div class="text-center my-2">
-                            <img class="h-16 w-16 rounded-full mx-auto"
-                                src="https://lavinephotography.com.au/wp-content/uploads/2017/01/PROFILE-Photography-112.jpg"
-                                alt="">
-                            <a href="#" class="text-main-color">Natie</a>
-                        </div>
-                        <div class="text-center my-2">
-                            <img class="h-16 w-16 rounded-full mx-auto"
-                                src="https://bucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com/public/images/f04b52da-12f2-449f-b90c-5e4d5e2b1469_361x361.png"
-                                alt="">
-                            <a href="#" class="text-main-color">Casey</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- End of friends card -->
+            
             </div>
             <!-- Right Side -->
             <div class="w-full md:w-9/12 mx-2 h-64">
                 <!-- Profile tab -->
                 <!-- About Section -->
-                <div class="bg-white p-3 shadow-sm rounded-sm">
-                    <div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
+                <div class="bg-slate-500 p-3 shadow-sm rounded-sm">
+                    <div class="flex items-center space-x-2 font-semibold text-white leading-8">
                         <span clas="text-green-500">
                             <svg class="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
@@ -90,7 +50,7 @@
                         </span>
                         <span class="tracking-wide">About</span>
                     </div>
-                    <div class="text-gray-700">
+                    <div class="text-white">
                         <div class="grid md:grid-cols-2 text-sm">
                             <div class="grid grid-cols-2">
                                 <div class="px-4 py-2 font-semibold">Full Name</div>
@@ -107,7 +67,7 @@
                             <div class="grid grid-cols-2">
                                 <div class="px-4 py-2 font-semibold">Email.</div>
                                 <div class="px-4 py-2">
-                                    <a class="text-blue-800" href="mailto:jane@example.com">
+                                    <a class="text-white" href="mailto:jane@example.com">
                                         {{ $data[0]->email }}
                                     </a>
                                 </div>
@@ -130,38 +90,36 @@
                             </div>
                         </div>
                     </div>
-                    <button
-                        class="block w-full text-blue-800 text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">Show
-                        Full Information</button>
+                    
                 </div>
                 <!-- End of about section -->
 
                 <div class="my-4"></div>
 
                 <!-- Experience and education -->
-                <div class="bg-white p-3 shadow-sm rounded-sm">
+                <div class="bg-slate-500 p-3 shadow-sm rounded-sm">
 
                     <div class="grid grid-cols-2">
                         <div>
-                            <div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3">
-                                <span clas="text-green-500">
+                            <div class="flex items-center space-x-2 font-semibold text-white leading-8 mb-3">
+                                <span clas=" text-white">
                                     <svg class="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                         stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                                     </svg>
                                 </span>
-                                <span class="tracking-wide">Experience</span>
+                                <span class="tracking-wide text-white">Experience</span>
                             </div>
                             <ul class="list-inside space-y-2">
                                 <li>
-                                    <div class="text-teal-600">{{ $data[0]->previousJob }}</div>
+                                    <div class="bg-slate-500">{{ $data[0]->previousJob }}</div>
                                 </li>
                             </ul>
                         </div>
                         <div>
-                            <div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3">
-                                <span clas="text-green-500">
+                            <div class="flex items-center space-x-2 font-semibold text-white leading-8 mb-3">
+                                <span clas="text-white">
                                     <svg class="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                         stroke="currentColor">
                                         <path fill="#fff" d="M12 14l9-5-9-5-9 5 9 5z" />
@@ -175,7 +133,7 @@
                             </div>
                             <ul class="list-inside space-y-2">
                                 <li>
-                                    <div class="text-teal-600">{{ $data[0]->education }}</div>
+                                    <div class="text-white">{{ $data[0]->education }}</div>
                                 </li>
                             </ul>
                         </div>
