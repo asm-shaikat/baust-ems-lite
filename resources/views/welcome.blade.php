@@ -22,7 +22,10 @@
     <script src="https://code.iconify.design/iconify-icon/1.0.0/iconify-icon.min.js"></script>
     <title>@yield('title')</title>
 </head>
-<body class="bg-inherit text-inharit">
+<body style="background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);">
+
+<!-- <body class="bg-inherit text-inharit"> -->
+<!-- background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%); -->
     @yield('navbar')
     <div style="margin-left:auto;">
     @yield('content')

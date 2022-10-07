@@ -4,7 +4,7 @@
 
 @include('Register.navbar')
 @section('content')
-<div class="">
+<div class="-mt-16 p-4">
   <form action="{{ url('/register/search/result') }}" method="post">
     @csrf
     <div>
@@ -18,7 +18,7 @@
       </div>
       <div>
         @if(Session::get('failed'))
-        <p class="text-red-900 font-bold text-2xl">{{ session::get('failed') }} :(</p>
+        <p class="text-red-500 font-bold text-2xl p-2">{{ session::get('failed') }}<i class="ml-2 fa-regular fa-face-sad-tear"></i></p>
         @endif
       </div>
     </div>

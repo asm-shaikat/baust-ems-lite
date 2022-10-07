@@ -12,15 +12,15 @@
 <style>
     table, tr, th{
         width: 250PX;
-        
     }
 </style>
 
+<div class="p-12 -mt-20">
 <div class="flex">
     <div class="card card-compact w-96 bg-base-100 shadow-xl row-span-3 mr-10 mb-10">
-    <div class="card-body">
+    <div class="card-body bg-purple-700 text-white border border-cyan-900">
         <h2 class="card-title">Employee<h2>
-        <table>
+        <table class="text-white">
             <tr>
                 <th>Current Employees</th>
                 <th>Left Job</th>
@@ -34,9 +34,9 @@
     </div>    
 
     <div class="card card-compact w-96 bg-base-100 shadow-xl row-span-3 mr-10 mb-10">
-    <div class="card-body">
+    <div class="card-body bg-purple-700 text-white border border-cyan-900">
         <h2 class="card-title">CSE Department's Students<h2>
-        <table>
+         <table class="text-white">
             <tr>
                 <th>Current Students</th>
                 <th>Undergraduate Students</th>
@@ -49,9 +49,9 @@
     </div>
     </div>
     <div class="card card-compact w-96 bg-base-100 shadow-xl row-span-3 mr-10 mb-10">
-    <div class="card-body">
+    <div class="card-body bg-purple-700 text-white border border-cyan-900">
         <h2 class="card-title">EEE Department's Students<h2>
-        <table>
+         <table class="text-white">
             <tr>
                 <th>Current Students</th>
                 <th>Undergraduate Students</th>
@@ -68,9 +68,9 @@
 <div class="flex">
 
 <div class="card card-compact w-96 bg-base-100 shadow-xl row-span-3 mr-10 mb-10">
-    <div class="card-body">
+    <div class="card-body bg-purple-700 text-white border border-cyan-900">
         <h2 class="card-title">ME Department's Students<h2>
-        <table>
+         <table class="text-white">
             <tr>
                 <th>Current Students</th>
                 <th>Undergraduate Students</th>
@@ -85,9 +85,9 @@
 
 
     <div class="card card-compact w-96 bg-base-100 shadow-xl row-span-3 mr-10 mb-10">
-    <div class="card-body">
+    <div class="card-body bg-purple-700 text-white border border-cyan-900">
         <h2 class="card-title">ICT Department's Students<h2>
-        <table>
+         <table class="text-white">
             <tr>
                 <th>Current Students</th>
                 <th>Undergraduate Students</th>
@@ -100,9 +100,9 @@
     </div>
     </div>
     <div class="card card-compact w-96 bg-base-100 shadow-xl row-span-3 mr-10 mb-10">
-    <div class="card-body">
+    <div class="card-body bg-purple-700 text-white border border-cyan-900">
         <h2 class="card-title">CE Department's Students<h2>
-        <table>
+         <table class="text-white">
             <tr>
                 <th>Current Students</th>
                 <th>Undergraduate Students</th>
@@ -120,9 +120,9 @@
     
 
     <div class="card card-compact w-96 bg-base-100 shadow-xl row-span-3 mr-10 mb-10">
-    <div class="card-body">
+    <div class="card-body bg-purple-700 text-white border border-cyan-900">
         <h2 class="card-title">IPE Department's Students<h2>
-        <table>
+         <table class="text-white">
             <tr>
                 <th>Current Students</th>
                 <th>Undergraduate Students</th>
@@ -136,9 +136,9 @@
     </div>
 
     <div class="card card-compact w-96 bg-base-100 shadow-xl row-span-3 mr-10 mb-10">
-    <div class="card-body">
+    <div class="card-body bg-purple-700 text-white border border-cyan-900">
         <h2 class="card-title">BBA Department's Students<h2>
-        <table>
+         <table class="text-white">
             <tr>
                 <th>Current Students</th>
                 <th>Undergraduate Students</th>
@@ -152,9 +152,9 @@
     </div>
 
     <div class="card card-compact w-96 bg-base-100 shadow-xl row-span-3 mr-10 mb-10">
-    <div class="card-body">
+    <div class="card-body bg-purple-700 text-white border border-cyan-900">
         <h2 class="card-title">ENGLISH Department's Students<h2>
-        <table>
+         <table class="text-white">
             <tr>
                 <th>Current Students</th>
                 <th>Undergraduate Students</th>
@@ -166,6 +166,8 @@
         </table>
     </div>
     </div>
-    
+
+</div>
+
 </div>
 @endsection

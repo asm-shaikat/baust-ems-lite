@@ -5,11 +5,11 @@
 @include('navbar')
 @section('content')
 <div class="overflow-x-auto  w-full">
-    <p class="w-50 ml-60 text-center font-bold text-2xl">All Students</p>
+    <p class="w-50 ml-60 text-center font-bold text-2xl dark:text-white">All Students</p>
   <table class="table w-50 ml-72 absolute">
     <!-- head -->
     <thead>
-      <tr>
+      <tr class="dark:text-white">
         <th>Id</th>
         <th>Name</th>
         <th>Email</th>
@@ -20,7 +20,7 @@
     <tbody>
       <!-- row 1 -->
       @foreach ($data as $data)
-      <tr>
+      <tr class="dark:text-white">
         <th>{{ $data->id }}</th>
         <td>{{ $data->name }}</td>
         <td>{{ $data->email }}</td>

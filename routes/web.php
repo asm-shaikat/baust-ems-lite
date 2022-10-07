@@ -39,7 +39,7 @@ Route::get('/register/home',[RegisterController::class,'viewregisterhome']);
 
 // View profile page
 
-Route::get('/register/profile',[LoginController::class,'Profile'])->name('register-profile');
+Route::get('/register/profile',[RegisterController::class,'Profile'])->name('register-profile');
 
 //view student min information  
 Route::get('/register/view-students-info',[RegisterController::class,'view_students_info']);
@@ -65,7 +65,11 @@ Route::get('/register/employees-info/{id}',[RegisterController::class,'view_empl
 
 Route::get('/recruiter/home',[LoginController::class,'login']);
 
-Route::get('/recruiter/add-student',[LoginController::class,'add_student']);
+// Recruiter profile
+
+Route::get('/recruiter/home',[LoginController::class,'recruiter_profile']);
+
+Route::get('/recruiter/add-student',[RecuiterController::class,'add_student']);
 
 Route::get('/recruiter/update-Students-info',[RecuiterController::class,'update_Students_info']);
 
@@ -73,12 +77,18 @@ Route::get('/recruiter/update-Students-info-details/{id}',[RecuiterController::c
 Route::post('/recruiter/send-update-Students-info-details/{id}',[RecuiterController::class,'send_update_Students_info_details']);
 
 // Logout
-Route::post('/logout',[LoginController::class,'logout']);
+Route::post('/logout',[LoginController::class,'RegisterLogout']);
 
 //add student
 Route::post('/recruiter/send_add_student_data', [RecuiterController::class, 'send_add_student_data']);
 });  //end of preventBackHistory middleware 
 
+// Department routes
+
 //go to deparment profile page
 Route::get('/department/profile',[RecuiterController::class, 'department_profile']);
 Route::get('/department/home',[RecuiterController::class, 'department_home']);
+// Update profile info
+Route::get('/department/profile/update/{id}',[RecuiterController::class, 'department_profile_update']);
+
+Route::post('/department/profile/update/send/{id}',[RecuiterController::class, 'department_profile_update_data']);

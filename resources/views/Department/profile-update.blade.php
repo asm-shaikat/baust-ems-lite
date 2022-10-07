@@ -20,6 +20,8 @@
         border-color: var(--main-color);
     }
 </style>
+    <form action="{{ url('/department/profile/update/send/'.$data1[0]->id) }}" method="post" enctype="multipart/form">
+        @csrf
     <div class="container mx-auto">
         <div class="md:flex no-wrap md:-mx-2 ">
             <!-- Left Side -->
@@ -49,8 +51,9 @@
                             <span>Member since</span>
                             <span class="ml-auto">{{$data[0]->created_at}}</span>
                         </li>
-                        <li><button class="btn btn-error text-white"><a href="{{ url('/department/profile/update/'.$data1[0]->id) }}">Update Profile</a></button></li>
+                        
                     </ul>
+                    <li><button type="submit" class="btn btn-success text-white">Save</button></li>
                 </div>
                 <!-- End of profile card -->
                 <div class="my-4"></div>
@@ -75,7 +78,7 @@
                         <div class="grid md:grid-cols-2 text-sm">
                             <div class="grid grid-cols-2">
                                 <div class="px-4 py-2 font-semibold">Full Name</div>
-                                <div class="px-4 py-2">{{$data1[0]->name}}</div>
+                                <div class="px-4 py-2"><input type="text" class="input input-bordered w-full max-w-xs dark:bg-white input-warning" value="{{$data1[0]->name}}" name="name"></div>
                             </div>
                             <div class="grid grid-cols-2">
                                 <div class="px-4 py-2 font-semibold">Phone</div>
@@ -93,14 +96,11 @@
                                 <div class="px-4 py-2 font-semibold">Department</div>
                                 <div class="px-4 py-2">{{$data[0]->eDept}}</div>
                             </div>
-                            <div class="grid grid-cols-2">
-                                <div class="px-4 py-2 font-semibold">National ID</div>
-                                <div class="px-4 py-2">{{$data[0]->nationalID}}</div>
-                            </div>
+            
                             <div class="grid grid-cols-2">
                                 <div class="px-4 py-2 font-semibold">Email.</div>
                                 <div class="px-4 py-2">
-                                    <a class="text-blue-800" href="mailto:{{$data[0]->email}}">{{$data[0]->email}}</a>
+                                    <p class="text-blue-800" href="mailto:{{$data[0]->email}}">{{$data[0]->email}}</p>
                                 </div>
                             </div>
                             
@@ -151,7 +151,7 @@
                             <ul class="list-inside space-y-2">
                             @if ($data[0]->education != "")
                                 @foreach(explode(',', $data[0]->education) as $info) 
-                                    <li><div class="text-teal-600">{{$info}} </div></li>
+                                <li><div class="text-teal-600">{{$info}} </div></li>
                                 @endforeach
                             @endif
                             </ul>
@@ -163,5 +163,6 @@
             </div>
         </div>
     </div>
+    </form>
 
 @endsection

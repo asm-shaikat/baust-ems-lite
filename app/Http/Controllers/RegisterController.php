@@ -6,16 +6,15 @@ use App\Models\Edetail;
 use App\Models\Employee;
 use App\Models\Login;
 use App\Models\Student;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 
 
-class RegisterController extends Controller
-{
-    public function viewaddEmployees()
-    {
+class RegisterController extends Controller{
+    public function viewaddEmployees(){
         return view('Register.add-employee');
     }
     public function addEmployees(Request $request)
@@ -37,7 +36,7 @@ class RegisterController extends Controller
             'education' => 'required',
         ]);
         $employees_details = new Edetail();
-        $login = new Login();
+        $users = new User();
         $employees_details->fathersName = $request->has('fathersName') ? $request->get('fathersName') : " ";
         $employees_details->mothersName = $request->has('mothersName') ? $request->get('mothersName') : " ";
         $employees_details->nationalID = $request->has('nationalID') ? $request->get('nationalID') : " ";
@@ -55,11 +54,11 @@ class RegisterController extends Controller
         $employees_details->save();
 
         // Inserting into Login table
-        $login->email = $employees_details->email;
-        $login->phone = $employees_details->phone;
-        $login->password = $employees_details->password;
-        $login->user_type = $employees_details->post;
-        $login->save();
+        $users->name = $employees_details->name;
+        $users->email = $employees_details->email;
+        $users->password = $employees_details->password;
+        $users->user_type = $employees_details->post;
+        $users->save();
         return back()->with('success', "Employee added successfully");
     }
 
@@ -82,30 +81,42 @@ class RegisterController extends Controller
     {
         return view('Register.setting');
     }
-    public function view_students_info()
-    {
-        $studentInfo = Student::all();
-        // dd($studentInfo);
-        return view('Register.students-info', compact('studentInfo'));
+    public function view_students_info(){
+        if (Auth::check()){
+            $studentInfo = Student::all();
+            return view('Register.students-info', compact('studentInfo'));
+        }
+        else{
+            return redirect('/');
+        }
+
+    
+
     }
     public function view_details_student_info($id)
     {
         $data = DB::table('students')->where('id', $id)->get();
         return view('Register.students-info-details', compact('data'));
     }
-    public function viewregisterhome()
-    {
-        return view('Register.home');
-    }
+//     public function viewregisterhome()
+//     {
+//         if(Auth::check()){
+//         return view('Register.home');
+//         }
+//         else{
+//             return redirect('/');
+//         }
+//     }
 
-    public function search_student_info()
-    {
+    public function search_student_info(){
+            if (Auth::check()){
         $searchResult = Student::all();
         return view('Register.search', compact('searchResult'));
+            }
     }
 
-    public function result_search_student_info(Request $request)
-    {
+    public function result_search_student_info(Request $request){
+        if (Auth::check()){
         $searchKey = $request->has('search') ? $request->get('search') : "";
         $searchResult = DB::table('students')
             ->where('concatanate', 'LIKE', '%' . $searchKey . '%')
@@ -116,9 +127,10 @@ class RegisterController extends Controller
             return back()->with('failed', 'No search results found');
         }
     }
-    public function registerDashboard(Request $request)
-    {
-                $countCurrentEmployees = DB::table('edetails')->where('active', 1)->count();
+    }
+    public function registerDashboard(Request $request){
+        if(Auth::check()){
+            $countCurrentEmployees = DB::table('edetails')->where('active', 1)->count();
                 $countLeaveEmployees = DB::table('edetails')->where('active', 0)->count();
                 $countCurrentStudentCSE = DB::table('students')->where('active', 1)->where('dept', "CSE")->count();
                 $countPassStudentCSE = DB::table('students')->where('active', 0)->where('dept', "CSE")->count();
@@ -138,6 +150,14 @@ class RegisterController extends Controller
                 $countPassStudentENGLISH = DB::table('students')->where('active', 0)->where('dept', "ENGLISH")->count();
                 
                 return view('Register.home', compact('countCurrentEmployees','countLeaveEmployees','countCurrentStudentCSE', 'countPassStudentCSE','countCurrentStudentEEE', 'countPassStudentEEE','countCurrentStudentME', 'countPassStudentME','countCurrentStudentICT', 'countPassStudentICT','countCurrentStudentCE', 'countPassStudentCE','countCurrentStudentIPE', 'countPassStudentIPE','countCurrentStudentBBA', 'countPassStudentBBA','countCurrentStudentENGLISH', 'countPassStudentENGLISH'));
-           
+        }   
+
+    }
+
+    public function Profile(Request $request){
+        $getSessionUserEmail = Auth::User()->email;
+        $send_data = DB::table('edetails')->select("*")->where('email',$getSessionUserEmail)->get();
+        $data = json_decode($send_data);
+        return view('profile',compact('data'));
     }
 }
