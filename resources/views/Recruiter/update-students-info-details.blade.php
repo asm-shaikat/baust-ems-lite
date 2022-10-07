@@ -108,7 +108,7 @@
          <div class="w-full md:w-full px-3 mb-6">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 dark:text-white" for='Gender'>Gender</label>
             <select class="form-select" name="gender" aria-label="Default select example">
-               <option selected value="{{ $studentId->gender}}">{{ $studentId->name}}</option>
+               <option selected value="{{ $studentId->gender}}">{{ $studentId->gender}}</option>
                <option value="male">Male</option>
                <option value="female">Female</option>
                <option value="Other">Other</option>

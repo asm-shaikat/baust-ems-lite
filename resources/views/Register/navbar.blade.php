@@ -14,7 +14,7 @@
             </div>
             <form action="{{ url('/logout') }}" method="post">
                 @csrf
-                <button type="submit" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name text-white">SignOut</span> </button>
+                <button type="submit" class="nav_link"><span class="nav_name text-white">Logout</span></button>
             </form>
         </nav>
     </div>

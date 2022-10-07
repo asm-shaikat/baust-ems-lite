@@ -12,6 +12,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\View as FacadesView;
+use Illuminate\View\View as ViewView;
 
 class LoginController extends Controller{
     
@@ -19,29 +21,19 @@ class LoginController extends Controller{
     public function index(){
         return view('universal-login');
     }
+
     // Checking auth use
     public function login(Request $request){
         $request->validate([
-            'email' => 'required|email',
-            'password' => 'required|min:5',
+            'email' => ['required', 'email'],
+            'password' => ['required'],
         ]);
-        $authUserInfo = Login::where('email',$request->email)->first();
-        if(!$authUserInfo)
-        {
-            return back()->with('loginfailed', 'Email Does Not Exist');
-        }
-        else if($authUserInfo && !Hash::check($request->password,$authUserInfo->password)){
-            return back()->with('loginfailed','Wrong Password');
-        }
-        else{
-              $request->session()->put('loggedUserEmail',$authUserInfo->email);             
-            //  $userdata = ['userinfo'=>Login::where('email','=',session('loggedUserEmail'))->first()];
-                
-                
-            if($authUserInfo->user_type == 'public'){
-                return view('Public.publicpage');
-            }
-            else if($authUserInfo->user_type == 'register'){
+
+        if(Auth::attempt($request->only('email','password'))){
+            $LoginUserData = Auth::User();
+            
+            // If user is a register
+            if($LoginUserData->user_type=='register'){
                 $countCurrentEmployees = DB::table('edetails')->where('active', 1)->count();
                 $countLeaveEmployees = DB::table('edetails')->where('active', 0)->count();
                 $countCurrentStudentCSE = DB::table('students')->where('active', 1)->where('dept', "CSE")->count();
@@ -59,52 +51,45 @@ class LoginController extends Controller{
                 $countCurrentStudentBBA = DB::table('students')->where('active', 1)->where('dept', "BBA")->count();
                 $countPassStudentBBA = DB::table('students')->where('active', 0)->where('dept', "BBA")->count();
                 $countCurrentStudentENGLISH = DB::table('students')->where('active', 1)->where('dept', "ENGLISH")->count();
-                $countPassStudentENGLISH = DB::table('students')->where('active', 0)->where('dept', "ENGLISH")->count();
-                
+                $countPassStudentENGLISH = DB::table('students')->where('active', 0)->where('dept', "ENGLISH")->count();                
                 return view('Register.home', compact('countCurrentEmployees','countLeaveEmployees','countCurrentStudentCSE', 'countPassStudentCSE','countCurrentStudentEEE', 'countPassStudentEEE','countCurrentStudentME', 'countPassStudentME','countCurrentStudentICT', 'countPassStudentICT','countCurrentStudentCE', 'countPassStudentCE','countCurrentStudentIPE', 'countPassStudentIPE','countCurrentStudentBBA', 'countPassStudentBBA','countCurrentStudentENGLISH', 'countPassStudentENGLISH'));
-            } 
-            else if ($authUserInfo->user_type == 'recruiter') {
-                $getSessionUserEmail = Session('loggedUserEmail');
+           
+            }
+            if($LoginUserData->user_type=='recruiter'){
+                $getSessionUserEmail = $LoginUserData->email;
                 $send_data = DB::table('edetails')->select("*")->where('email', $getSessionUserEmail)->get();
                 $data = json_decode($send_data);
                 return view('Recruiter.recruiter-dashboard',compact('data'));
             }
-            else if ($authUserInfo->user_type == 'professor' or 
-                     $authUserInfo->user_type == 'lecturer' or 
-                     $authUserInfo->user_type == 'dean' or 
-                     $authUserInfo->user_type == 'head') {
-                $getSessionUserEmail = Session('loggedUserEmail');
-                $send_data = DB::table('edetails')->select("*")->where('email', $getSessionUserEmail)->get();
+            
+            if($LoginUserData->user_type=='professor'){
+                if(Auth::check()){
+                    $getSessionUserEmail =  Auth::User()->email;
+                $send_data = DB::table('edetails')->select("*")->where('email',$getSessionUserEmail)->get();
                 $data = json_decode($send_data);
-                return view('Department.home',compact('data'));
+                $send_data1 = DB::table('users')->select("*")->where('email',$getSessionUserEmail)->get();
+                $data1 = json_decode($send_data1);
+                return view('Department.profile',compact('data','data1'));
+                }
+                else{
+                    return redirect('/');
+                }
             }
 
-            else{
-                $getSessionUserEmail = Session('loggedUserEmail');
-                $send_data = DB::table('edetails')->select("*")->where('email', $getSessionUserEmail)->get();
-                $data = json_decode($send_data);
-                return view('Employee.home',compact('data'));
-            }
 
-        }
-    }
 
-    
-    public function recruiter_profile(){
-        $getSessionUserEmail = Session('loggedUserEmail');
-        $send_data = DB::table('edetails')->select("*")->where('email', $getSessionUserEmail)->get();
-        $data = json_decode($send_data);
-        return view('Recruiter.recruiter-dashboard',compact('data'));
-    }
-    // Logout user
-    public function logout() {
-        if(session()->has('loggedUser')){
-            session()->pull('loggedUser');
-            return redirect('/');
-        }
-        else{
-            return redirect('/');
-        }
+        }          
+      
+}
+
+
+
+    // Logout Register
+    public function RegisterLogout(Request $request) {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/');
     }
 
     // for public page view
@@ -112,16 +97,6 @@ class LoginController extends Controller{
     public function Public_page(){
         return view('Public.publicpage');
     }
-    public function Profile(Request $request){
-        $getSessionUserEmail = Session('loggedUserEmail');
-        $send_data = DB::table('edetails')->select("*")->where('email',$getSessionUserEmail)->get();
-        $data = json_decode($send_data);
-        return view('profile',compact('data'));
-    }
     
-    public function add_student(){
-        return view('Recruiter.add-student');
-    }
-
     
 }

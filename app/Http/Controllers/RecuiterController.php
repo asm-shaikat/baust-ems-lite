@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Edetail;
 use App\Models\Login;
 use App\Models\Student;
+use App\Models\User;
 use Illuminate\Auth\Events\Login as EventsLogin;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\Console\Input\Input;
@@ -15,6 +17,11 @@ use Termwind\Components\Dd;
 
 class RecuiterController extends Controller
 {
+
+    public function add_student()
+    {
+        return view('Recruiter.add-student');
+    }
 
     public function send_add_student_data(Request $request)
     {
@@ -24,7 +31,7 @@ class RecuiterController extends Controller
             's_phone' => 'required|max:11',
         ]);
         $recuit_student = new Student();
-        $login = new Login();
+        $users = new User();
         $recuit_student->name = $request->has('name') ? $request->get('name') : "";
         $dept = $request->has('dept') ? $request->get('dept') : "";
         $recuit_student->dept = $dept;
@@ -81,120 +88,99 @@ class RecuiterController extends Controller
         $recuit_student->concatanate = $request->get('d_id') . $request->get('name') . $request->get('email') . $request->get('dept') . $request->get('s_phone') . $request->get('blood');
         $recuit_student->save();
 
-
-        // Inserting into login tabe
-        $login->email = $recuit_student->email;
-        $login->phone = $recuit_student->s_phone;
-        $login->password = $recuit_student->password;
-        $login->user_type = $recuit_student->user_type;
-        $login->save();
+        // Insering into User table
+        User::insert([
+            'name' => $recuit_student->name,
+            'email' => $recuit_student->email,
+            'password' =>   Hash::make($recuit_student->password),
+            'user_type' => $recuit_student->user_type,
+        ]);
         return back()->with('success', 'Students added successfully and Student id is' . ' ' . $dept_id);
-        // function find_id(Request $request)
-        // {
-        // $get_id = DB::table('students')->select->count()->where('dept','=',$request->dept)->where('batch','=',$request->batch)->first();
-        // return $get_id[0][0]+1;
-        // }
     }
 
     public function update_Students_info(Request $request)
     {
-        $data = DB::table('students')->get();
-        return view('Recruiter.update-students-info', compact('data'));
+        if (Auth::check() && Auth::User()->user_type == 'recruiter') {
+            $data = DB::table('students')->get();
+            return view('Recruiter.update-students-info', compact('data'));
+        } else {
+            return redirect('/');
+        }
     }
 
     public function update_Students_info_details($id)
     {
-        $studentId = Student::find($id);
-        return view('Recruiter.update-students-info-details', compact('studentId'));
+        if (Auth::check() && Auth::User()->user_type == 'recruiter') {
+            $studentId = Student::find($id);
+            return view('Recruiter.update-students-info-details', compact('studentId'));
+        } else {
+            return redirect('/');
+        }
     }
 
-    public function send_update_Students_info_details(Request $request, $id)
-    {
-        $studentId = Student::find($id);
-        // $loginId = new Login();
-        // $data = request()->except(['_token']);
-        // $studentLoginId = DB::table('logins')->select('*')->where('email',$studentId[0]->email)->get();
-        
-        //  finding email of student
-        // dd($studentId->email);
-        // $getLoginUserid = $studentId->email;
-        // DB::table('logins')->update([
-        //     'email' => $request->email,
-        //     'phone' => $request->phone,
-        // ]);
+        public function send_update_Students_info_details(Request $request, $id)
+        {
+            $studentId = Student::find($id);
+            $LoginUser = new User();
+            // $findEmailForStudent = DB::table('users')->select('email')->where('email','=',$studentId->email)->get();
+            $studentId->update($request->all());
+            // $findEmailForStudent = $findEmailForStudent[0]->email;
+            // DB::table('users')->where('email',$findEmailForStudent)->update(['name',$request->name]);
+            return redirect()->back()->with('success', 'Student updated successfully');
+        }
+        public function department_profile(Request $request)
+        {
+        if (Auth::check()) {
+            $getSessionUserEmail =  Auth::User()->email;
+            $send_data = DB::table('edetails')->select("*")->where('email', $getSessionUserEmail)->get();
+            $send_data1 = DB::table('users')->select("*")->where('email', $getSessionUserEmail)->get();
+            $data = json_decode($send_data);
+            $data1 = json_decode($send_data1);
+            return view('Department.profile', compact('data', 'data1'));
+        }
+            else{
+                return redirect('/');
+            }
+        }
+        public function department_home()
+        {
+            if(Auth::check()){
+                $getSessionUserEmail =  Auth::User()->email;
+                $send_data = DB::table('edetails')->select("*")->where('email',$getSessionUserEmail)->get();
+                $data = json_decode($send_data);
+                return view('Department.home',compact('data'));    
+            }
+            else{
+                return redirect('/');
+            }
+        }
 
-        // dd(DB::table('logins')->select('*')->where('email',$getLoginUserid))->get();
+        public function department_profile_update(Request $request,$id){
+            if(Auth::check()){
+            $getSessionUserEmail =  Auth::User()->email;
+            $send_data = DB::table('edetails')->select("*")->where('email',$getSessionUserEmail)->get();
+            $send_data1 = DB::table('users')->select("*")->where('email',$getSessionUserEmail)->get();
+            $data = json_decode($send_data);
+            $data1 = json_decode($send_data1);
+            return view('Department.profile-update',compact('data','data1'));
+            }
+        }
 
-        // dd($studentLoginId[0]->email);
-        // $studentLoginId[0]->email = $request->email;
-        // $studentLoginId[0]->phone = $request->s_phone;
-        // $studentLoginId[0]->save();
-        // $request->session()->put($studentLoginId[0]->email,'=',$request->email,$studentLoginId[0]->phone,'=', $request->s_phone);
-        // return back();
-        // $request->validate([
-        //     'email' => 'required|unique:students',
-        //     's_phone' => 'required|max:11',
-        // ]);
-        // dd($studentLoginId);
-        // $loginId->
-        $studentId->update($request->all());
-        // $studentLoginId->update($request->all());
-        // $studentLoginId->update($request->all());
-        return redirect()->back()->with('success', 'Student updated successfully');
-    }
-    public function department_profile(Request $request)
-    {
-        $getSessionUserEmail = Session('loggedUserEmail');
-        $send_data = DB::table('edetails')->select("*")->where('email',$getSessionUserEmail)->get();
-        $data = json_decode($send_data);
-        return view('Department.profile',compact('data'));
-    }
-    public function department_home()
-    {
-        $getSessionUserEmail = Session('loggedUserEmail');
-        $send_data = DB::table('edetails')->select("*")->where('email',$getSessionUserEmail)->get();
-        $data = json_decode($send_data);
-        return view('Department.home',compact('data'));
-    }
+        public function department_profile_update_data(Request $request,$id){
+            if(Auth::check()){
+            $getSessionUserid = User::find($id);
+            $getSessionUserEmail =  Auth::User()->email;
+            $getSessionUserid->update($request->all());
+            $send_data = DB::table('edetails')->select("*")->where('email',$getSessionUserEmail)->get();
+            $data = json_decode($send_data);
+            $send_data1 = DB::table('users')->select("*")->where('email',$getSessionUserEmail)->get();
+            $data1 = json_decode($send_data1);
+            return view('Department.profile-update',compact('data','data1'));
+        }
+        else{
+            return redirect('/');
+        }
 
-    public function department_profile_update(){
-        $getSessionUserEmail = Session('loggedUserEmail');
-        $send_data = DB::table('edetails')->select("*")->where('email',$getSessionUserEmail)->get();
-        $data = json_decode($send_data);
-        return view('Department.profile-update',compact('data'));
-    }
-
-    public function department_profile_update_data(Request $request){
-        // $employees_details = new Edetail();
-        // $login = new Login();
-        // $employees_details->fathersName = $request->has('fathersName') ? $request->get('fathersName') : " ";
-        // $employees_details->mothersName = $request->has('mothersName') ? $request->get('mothersName') : " ";
-        // $employees_details->nationalID = $request->has('nationalID') ? $request->get('nationalID') : " ";
-        // $employees_details->previousJob = $request->has('previousJob') ? $request->get('previousJob') : " ";
-        // $employees_details->name = $request->has('name') ? $request->get('name') : " ";
-        // $employees_details->email = $request->has('email') ? $request->get('email') : " ";
-        // $employees_details->phone = $request->has('phone') ? $request->get('phone') : " ";
-        // $employees_details->eDept = $request->has('eDept') ? $request->get('eDept') : " ";
-        // $employees_details->education = $request->has('education') ? $request->get('education') : " ";
-        // $employees_details->save();
-
-        // // Inserting into Login table
-        // $login->email = $employees_details->email;
-        // $login->phone = $employees_details->phone;
-        // $login->password = $employees_details->password;
-        // $login->user_type = $employees_details->post;
-        // $login->save();
-        // return back()->with('success', "Employee added successfully");
-        $getSessionUserEmail = Session('loggedUserEmail');
-        $send_data = DB::table('edetails')->select("*")->where('email',$getSessionUserEmail)->get();
-        // $data = json_decode($send_data);
-        // dd($data[0]->name);
-
-        // $employees_details->name = $request->session()->put('name', $request->input('name'));
-        // $employees_details->save();
-        // dd($request->session()->get('name'));  
-        dd($send_data);
-
-    }
+        }
 
 }

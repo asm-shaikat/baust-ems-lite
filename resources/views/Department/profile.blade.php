@@ -31,7 +31,7 @@
                             src="/images/profile-avatar.jpg"
                             alt="">
                     </div>
-                    <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">{{$data[0]->name}}</h1>
+                    <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">{{$data1[0]->name}}</h1>
                     <h3 class="text-gray-600 font-lg text-semibold leading-6">{{@ucfirst($data[0]->post)}}</h3>
                     <ul
                         class="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
@@ -49,7 +49,7 @@
                             <span>Member since</span>
                             <span class="ml-auto">{{$data[0]->created_at}}</span>
                         </li>
-                        <li><button class="btn btn-error text-white"><a href="{{ url('/department/profile/update') }}">Update Profile</a></button></li>
+                        <li><button class="btn btn-error text-white"><a href="{{ url('/department/profile/update/'.$data1[0]->id) }}">Update Profile</a></button></li>
                     </ul>
                 </div>
                 <!-- End of profile card -->
@@ -75,7 +75,7 @@
                         <div class="grid md:grid-cols-2 text-sm">
                             <div class="grid grid-cols-2">
                                 <div class="px-4 py-2 font-semibold">Full Name</div>
-                                <div class="px-4 py-2">{{$data[0]->name}}</div>
+                                <div class="px-4 py-2">{{$data1[0]->name}}</div>
                             </div>
                             <div class="grid grid-cols-2">
                                 <div class="px-4 py-2 font-semibold">Phone</div>
