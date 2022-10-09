@@ -14,83 +14,78 @@
                     <img tabindex="0" class="focus:outline-none h-full w-full object-cover rounded-full shadow" src="https://dh-ui.s3.amazonaws.com/assets/photo-1570211776045-af3a51026f4a.jfif" alt="boy avatar" />
                 </div>
                 <p tabindex="0" class="focus:outline-none mb-2 text-lg font-bold text-gray-900 dark:text-gray-100">{{ $employeeId[0]->name}}</p>
-                <p tabindex="0" class="focus:outline-none mb-6 text-sm ">{{ $employeeId[0]->email}}</p>
+                <p tabindex="0" class="focus:outline-none mb-6 text-sm dark:text-white">{{ $employeeId[0]->email}}</p>
             </div>
         </div>
         <div class="xl:w-3/5 lg:w-3/5 px-6 py-8">
             <div class="flex flex-wrap justify-between">
                 <div class="w-2/5 mb-8 text-white">
                     <div class="border-b pb-3">
-                        <p tabindex="0" class="focus:outline-none mb-2 text-sm font-medium">Birthday</p>
-                        <p tabindex="0" class="focus:outline-none text-sm">29 Jan, 1982</p>
+                        <p tabindex="0" class="focus:outline-none mb-2 text-sm font-medium">Father's Name</p>
+                        <p tabindex="0" class="focus:outline-none text-sm">{{ $employeeId[0]->fathersName}}</p>
                     </div>
                 </div>
                 <div class="w-2/5 mb-8 text-white">
                     <div class="border-b pb-3 text-white">
-                        <p tabindex="0" class="focus:outline-none mb-2 text-sm  font-medium">Gender</p>
-                        <p tabindex="0" class="focus:outline-none text-sm ">Male</p>
+                        <p tabindex="0" class="focus:outline-none mb-2 text-sm  font-medium">Mother's Name</p>
+                        <p tabindex="0" class="focus:outline-none text-sm ">{{ $employeeId[0]->mothersName}}</p>
                     </div>
                 </div>
                 <div class="w-2/5 mb-8 text-white">
                     <div class="border-b pb-3">
-                        <p tabindex="0" class="focus:outline-none mb-2 text-sm  font-medium">Location</p>
-                        <p tabindex="0" class="focus:outline-none text-sm ">California, USA</p>
+                        <p tabindex="0" class="focus:outline-none mb-2 text-sm  font-medium">Post</p>
+                        <p tabindex="0" class="focus:outline-none text-sm ">{{ @ucfirst($employeeId[0]->post)}}</p>
                     </div>
                 </div>
                 <div class="w-2/5 mb-8 text-white">
                     <div class="border-b pb-3">
-                        <p tabindex="0" class="focus:outline-none mb-2 text-sm  font-medium">Phone Number</p>
-                        <p tabindex="0" class="focus:outline-none text-sm ">202-555-0191</p>
+                        <p tabindex="0" class="focus:outline-none mb-2 text-sm  font-medium">Department</p>
+                        <p tabindex="0" class="focus:outline-none text-sm ">{{ $employeeId[0]->eDept}}</p>
                     </div>
                 </div>
                 <div class="w-2/5 text-white">
                     <div class="border-b pb-3">
-                        <p tabindex="0" class="focus:outline-none mb-2 text-sm  font-medium">Last Login</p>
-                        <p tabindex="0" class="focus:outline-none text-sm ">Today</p>
+                        <p tabindex="0" class="focus:outline-none mb-2 text-sm  font-medium">National ID</p>
+                        <p tabindex="0" class="focus:outline-none text-sm ">{{ $employeeId[0]->nationalID}}</p>
                     </div>
                 </div>
                 <div class="w-2/5 text-white">
                     <div class="border-b pb-3">
-                        <p tabindex="0" class="focus:outline-none mb-2 text-sm  font-medium">Status</p>
-                        <p tabindex="0" class="focus:outline-none text-sm ">Approved</p>
+                        <p tabindex="0" class="focus:outline-none mb-2 text-sm  font-medium">Blood Group</p>
+                        <p tabindex="0" class="focus:outline-none text-sm ">{{ $employeeId[0]->bloodGrp}}</p>
                     </div>
                 </div>
             </div>
             <div class="flex flex-wrap justify-between">
                 <div class="w-2/5 mb-8 text-white">
                     <div class="border-b pb-3">
-                        <p tabindex="0" class="focus:outline-none mb-2 text-sm  font-medium">Birthday</p>
-                        <p tabindex="0" class="focus:outline-none text-sm ">29 Jan, 1982</p>
+                        <p tabindex="0" class="focus:outline-none mb-2 text-sm  font-medium">Previous Job</p>
+                        <p tabindex="0" class="focus:outline-none text-sm ">{{ $employeeId[0]->previousJob}}</p>
                     </div>
                 </div>
                 <div class="w-2/5 mb-8 text-white">
                     <div class="border-b pb-3">
-                        <p tabindex="0" class="focus:outline-none mb-2 text-sm  font-medium">Gender</p>
-                        <p tabindex="0" class="focus:outline-none text-sm ">Male</p>
+                        <p tabindex="0" class="focus:outline-none mb-2 text-sm  font-medium">Joining Date</p>
+                        <p tabindex="0" class="focus:outline-none text-sm ">{{ $employeeId[0]->joiningDate}}</p>
                     </div>
                 </div>
                 <div class="w-2/5 mb-8 text-white">
                     <div class="border-b pb-3">
-                        <p tabindex="0" class="focus:outline-none mb-2 text-sm  font-medium">Location</p>
-                        <p tabindex="0" class="focus:outline-none text-sm ">California, USA</p>
+                        <p tabindex="0" class="focus:outline-none mb-2 text-sm  font-medium">Leaving Date</p>
+                        <p tabindex="0" class="focus:outline-none text-sm ">{{ $employeeId[0]->leavingDate}}</p>
                     </div>
                 </div>
                 <div class="w-2/5 mb-8 text-white">
                     <div class="border-b pb-3">
                         <p tabindex="0" class="focus:outline-none mb-2 text-sm  font-medium">Phone Number</p>
-                        <p tabindex="0" class="focus:outline-none text-sm ">202-555-0191</p>
+                        <p tabindex="0" class="focus:outline-none text-sm ">{{ $employeeId[0]->phone}}</p>
                     </div>
                 </div>
-                <div class="w-2/5 text-white">
-                    <div class="border-b pb-3">
-                        <p tabindex="0" class="text-white focus:outline-none mb-2 text-sm  font-medium">Last Login</p>
-                        <p tabindex="0" class="focus:outline-none text-sm ">Today</p>
-                    </div>
-                </div>
+                
                 <div class="w-2/5 text-white">
                     <div class="border-b pb-3">
                         <p tabindex="0" class="focus:outline-none mb-2 text-sm  font-medium">Status</p>
-                        <p tabindex="0" class="focus:outline-none text-sm ">Approved</p>
+                        <p tabindex="0" class="focus:outline-none text-sm ">@if($employeeId[0]->active){{"Active"}}@else{{"Inactive"}}@endif</p>
                     </div>
                 </div>
             </div>
