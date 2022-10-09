@@ -71,14 +71,16 @@ class LoginController extends Controller{
                 $data1 = json_decode($send_data1);
                 return view('Department.profile',compact('data','data1'));
                 }
-                else{
-                    return redirect('/');
-                }
+                
             }
 
 
 
-        }          
+        } 
+        else{
+            return back()->with('loginfailed','Invalid credentials');
+        }
+                 
       
 }
 
