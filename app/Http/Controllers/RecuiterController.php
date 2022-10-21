@@ -18,9 +18,21 @@ use Termwind\Components\Dd;
 class RecuiterController extends Controller
 {
 
-    public function add_student()
-    {
+    public function recuiter_dashboard(){
+        $threetwos = DB::table('students')->select('*')->where('term',2)->where('level',3)->paginate(5);
+        return view('Recruiter.dashboard',compact('threetwos'));
+    }
+
+    public function add_student(){
         return view('Recruiter.add-student');
+    }
+
+
+    public function recuiter_profile(){
+        $getSessionUserEmail = Auth::User()->email;
+        $send_data = DB::table('edetails')->select("*")->where('email',$getSessionUserEmail)->get();
+        $data = json_decode($send_data);
+        return view('Recruiter.profile',compact('data'));
     }
 
     public function send_add_student_data(Request $request)

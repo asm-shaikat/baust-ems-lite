@@ -59,7 +59,9 @@ class LoginController extends Controller{
                 $getSessionUserEmail = $LoginUserData->email;
                 $send_data = DB::table('edetails')->select("*")->where('email', $getSessionUserEmail)->get();
                 $data = json_decode($send_data);
-                return view('Recruiter.recruiter-dashboard',compact('data'));
+                $threetwos = DB::table('students')->select('*')->where('dept','CSE')->where('level',3)->paginate(5);
+                // dd($threetwo);
+                return view('Recruiter.dashboard',compact('data','threetwos'));
             }
             
             if($LoginUserData->user_type=='professor'){
