@@ -67,7 +67,9 @@ Route::get('/recruiter/home',[LoginController::class,'login']);
 
 // Recruiter profile
 
-Route::get('/recruiter/home',[LoginController::class,'recruiter_profile']);
+Route::get('/recruiter/profile',[RecuiterController::class,'recuiter_profile']);
+
+Route::get('/recruiter/dashboard',[RecuiterController::class,'recuiter_dashboard']);
 
 Route::get('/recruiter/add-student',[RecuiterController::class,'add_student']);
 

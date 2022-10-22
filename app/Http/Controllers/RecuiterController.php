@@ -18,9 +18,29 @@ use Termwind\Components\Dd;
 class RecuiterController extends Controller
 {
 
-    public function add_student()
-    {
+    public function recuiter_dashboard(){
+        $fourones = DB::table('students')->select('*')->where('level', 4)->where('term', 1)->orderBy('dept_id', 'DESC')->paginate(5);
+        $fourtwos = DB::table('students')->select('*')->where('level', 4)->where('term', 2)->orderBy('dept_id', 'DESC')->paginate(5);
+        $threetwos = DB::table('students')->select('*')->where('level', 3)->where('term', 2)->orderBy('dept_id', 'DESC')->paginate(5);
+        $threeones = DB::table('students')->select('*')->where('level', 3)->where('term', 1)->orderBy('dept_id', 'DESC')->paginate(5);
+        $twotwos = DB::table('students')->select('*')->where('level', 2)->where('term', 2)->orderBy('dept_id', 'DESC')->paginate(5);
+        $twoones = DB::table('students')->select('*')->where('level', 2)->where('term', 1)->orderBy('dept_id', 'DESC')->paginate(5);
+        $onetwos = DB::table('students')->select('*')->where('level', 1)->where('term', 2)->orderBy('dept_id', 'DESC')->paginate(5);
+        $oneones = DB::table('students')->select('*')->where('level', 1)->where('term', 1)->orderBy('dept_id', 'DESC')->paginate(5);
+        
+        return view('Recruiter.dashboard',compact('fourtwos','fourones','threetwos','threeones','twotwos','twoones','onetwos','oneones'));
+    }
+
+    public function add_student(){
         return view('Recruiter.add-student');
+    }
+
+
+    public function recuiter_profile(){
+        $getSessionUserEmail = Auth::User()->email;
+        $send_data = DB::table('edetails')->select("*")->where('email',$getSessionUserEmail)->get();
+        $data = json_decode($send_data);
+        return view('Recruiter.profile',compact('data'));
     }
 
     public function send_add_student_data(Request $request)
