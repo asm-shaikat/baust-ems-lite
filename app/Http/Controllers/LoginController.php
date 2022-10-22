@@ -55,13 +55,22 @@ class LoginController extends Controller{
                 return view('Register.home', compact('countCurrentEmployees','countLeaveEmployees','countCurrentStudentCSE', 'countPassStudentCSE','countCurrentStudentEEE', 'countPassStudentEEE','countCurrentStudentME', 'countPassStudentME','countCurrentStudentICT', 'countPassStudentICT','countCurrentStudentCE', 'countPassStudentCE','countCurrentStudentIPE', 'countPassStudentIPE','countCurrentStudentBBA', 'countPassStudentBBA','countCurrentStudentENGLISH', 'countPassStudentENGLISH'));
            
             }
-            if($LoginUserData->user_type=='recruiter'){
+            if ($LoginUserData->user_type == 'recruiter') {
                 $getSessionUserEmail = $LoginUserData->email;
                 $send_data = DB::table('edetails')->select("*")->where('email', $getSessionUserEmail)->get();
                 $data = json_decode($send_data);
-                $threetwos = DB::table('students')->select('*')->where('dept','CSE')->where('level',3)->paginate(5);
-                // dd($threetwo);
-                return view('Recruiter.dashboard',compact('data','threetwos'));
+
+                // query for all semesters students data
+                $fourones = DB::table('students')->select('*')->where('level', 4)->where('term', 1)->orderBy('dept_id', 'DESC')->paginate(5);
+                $fourtwos = DB::table('students')->select('*')->where('level', 4)->where('term', 2)->orderBy('dept_id', 'DESC')->paginate(5);
+                $threetwos = DB::table('students')->select('*')->where('level', 3)->where('term', 2)->orderBy('dept_id', 'DESC')->paginate(5);
+                $threeones = DB::table('students')->select('*')->where('level', 3)->where('term', 1)->orderBy('dept_id', 'DESC')->paginate(5);
+                $twotwos = DB::table('students')->select('*')->where('level', 2)->where('term', 2)->orderBy('dept_id', 'DESC')->paginate(5);
+                $twoones = DB::table('students')->select('*')->where('level', 2)->where('term', 1)->orderBy('dept_id', 'DESC')->paginate(5);
+                $onetwos = DB::table('students')->select('*')->where('level', 1)->where('term', 2)->orderBy('dept_id', 'DESC')->paginate(5);
+                $oneones = DB::table('students')->select('*')->where('level', 1)->where('term', 1)->orderBy('dept_id', 'DESC')->paginate(5);
+
+                return view('Recruiter.dashboard', compact('data', 'fourtwos', 'fourones', 'threetwos', 'threeones', 'twotwos', 'twoones', 'onetwos', 'oneones'));
             }
             
             if($LoginUserData->user_type=='professor'){

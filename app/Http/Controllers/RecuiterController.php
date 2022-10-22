@@ -19,8 +19,16 @@ class RecuiterController extends Controller
 {
 
     public function recuiter_dashboard(){
-        $threetwos = DB::table('students')->select('*')->where('term',2)->where('level',3)->paginate(5);
-        return view('Recruiter.dashboard',compact('threetwos'));
+        $fourones = DB::table('students')->select('*')->where('level', 4)->where('term', 1)->orderBy('dept_id', 'DESC')->paginate(5);
+        $fourtwos = DB::table('students')->select('*')->where('level', 4)->where('term', 2)->orderBy('dept_id', 'DESC')->paginate(5);
+        $threetwos = DB::table('students')->select('*')->where('level', 3)->where('term', 2)->orderBy('dept_id', 'DESC')->paginate(5);
+        $threeones = DB::table('students')->select('*')->where('level', 3)->where('term', 1)->orderBy('dept_id', 'DESC')->paginate(5);
+        $twotwos = DB::table('students')->select('*')->where('level', 2)->where('term', 2)->orderBy('dept_id', 'DESC')->paginate(5);
+        $twoones = DB::table('students')->select('*')->where('level', 2)->where('term', 1)->orderBy('dept_id', 'DESC')->paginate(5);
+        $onetwos = DB::table('students')->select('*')->where('level', 1)->where('term', 2)->orderBy('dept_id', 'DESC')->paginate(5);
+        $oneones = DB::table('students')->select('*')->where('level', 1)->where('term', 1)->orderBy('dept_id', 'DESC')->paginate(5);
+        
+        return view('Recruiter.dashboard',compact('fourtwos','fourones','threetwos','threeones','twotwos','twoones','onetwos','oneones'));
     }
 
     public function add_student(){
