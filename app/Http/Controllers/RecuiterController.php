@@ -203,4 +203,15 @@ class RecuiterController extends Controller
 
         }
 
+        public function result_publish(){
+            if(Auth::check()){
+            $getSessionUserEmail =  Auth::User()->email;
+            $send_data = DB::table('edetails')->select("*")->where('email', $getSessionUserEmail)->get();
+            $data = json_decode($send_data);
+                return view('Department.result',compact('data'));
+            }else{
+                return redirect('/');
+            }
+        }
+
 }

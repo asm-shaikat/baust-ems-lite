@@ -90,6 +90,10 @@ Route::post('/recruiter/send_add_student_data', [RecuiterController::class, 'sen
 //go to deparment profile page
 Route::get('/department/profile',[RecuiterController::class, 'department_profile']);
 Route::get('/department/home',[RecuiterController::class, 'department_home']);
+
+// Result publishing
+Route::get('/department/result-publish',[RecuiterController::class, 'result_publish']);
+
 // Update profile info
 Route::get('/department/profile/update/{id}',[RecuiterController::class, 'department_profile_update']);
 
