@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Edetail;
 use App\Models\Login;
+use App\Models\Result;
+use App\Models\Sessional;
 use App\Models\Student;
+use App\Models\Theory;
 use App\Models\User;
 use Illuminate\Auth\Events\Login as EventsLogin;
 use Illuminate\Contracts\Session\Session;
@@ -12,6 +15,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
+use Spatie\Backtrace\Backtrace;
 use Symfony\Component\Console\Input\Input;
 use Termwind\Components\Dd;
 
@@ -203,11 +207,50 @@ class RecuiterController extends Controller
 
         }
 
-        public function result_publish(){
+        public function result_publish(Request $request){
             if(Auth::check()){
             $getSessionUserEmail =  Auth::User()->email;
             $send_data = DB::table('edetails')->select("*")->where('email', $getSessionUserEmail)->get();
             $data = json_decode($send_data);
+            $result_theory = new Theory();
+            $result_sessional = new Sessional();
+            $course_type = $request->has('course_type') ? $request->get('course_type') : "";
+            if($course_type == 'Theory'){
+                $result_theory->id = $request->has('id') ? $request->get('id') : "";
+                $result_theory->name = $request->has('name') ? $request->get('name') : "";
+                $result_theory->level_term = $request->has('level_term') ? $request->get('level_term') : "";
+                $result_theory->course_type  = $request->has('course_type') ? $request->get('course_type'):"";
+                $result_theory->course = $request->get('course').'-'.$request->get('course_number');
+                $result_theory->course1 = $request->get('course1').'-'.$request->get('course1_number');
+                $result_theory->course2 = $request->get('course2').'-'.$request->get('course2_number');
+                $result_theory->course3 = $request->get('course3').'-'.$request->get('course3_number');
+                $result_theory->course4 = $request->get('course4').'-'.$request->get('course4_number');
+                $result_theory->save();
+                return back();
+            }else{
+                $result_sessional->id = $request->has('id') ? $request->get('id') : "";
+                $result_sessional->name = $request->has('name') ? $request->get('name') : "";
+                $result_sessional->level_term = $request->has('level_term') ? $request->get('level_term') : "";
+                $result_sessional->course_type  = $request->has('course_type') ? $request->get('course_type'):"";
+                $result_sessional->sessional = $request->get('course').'-'.$request->get('course_number');
+                $result_sessional->sessional1 = $request->get('course1').'-'.$request->get('course1_number');
+                $result_sessional->sessional2 = $request->get('course2').'-'.$request->get('course2_number');
+                $result_sessional->sessional3 = $request->get('course3').'-'.$request->get('course3_number');
+                $result_sessional->sessional4 = $request->get('course4').'-'.$request->get('course4_number');
+                $result_sessional->save();
+                return back();
+            }
+                return view('Department.result',compact('data'));
+            }else{
+                return redirect('/');
+            }
+        }
+
+        public function result_publish_view(Request $request){
+            if(Auth::check()){
+                $getSessionUserEmail =  Auth::User()->email;
+                $send_data = DB::table('edetails')->select("*")->where('email', $getSessionUserEmail)->get();
+                $data = json_decode($send_data);
                 return view('Department.result',compact('data'));
             }else{
                 return redirect('/');

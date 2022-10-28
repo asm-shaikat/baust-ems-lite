@@ -4,107 +4,100 @@
 @section('content')
 <!-- component -->
 
-<body class="font-mono bg-gray-400">
-    <!-- Container -->
-    <div class="container mx-auto">
-        <div class="flex justify-center px-6 my-12">
-            <!-- Row -->
-            <div class="w-full xl:w-3/4 lg:w-full flex">
+<div class="font-mono  w-full">
+    <div class="ml-52 ">
+        <form action="{{ url('/department/result-publish') }}" method="post">
+            @csrf
+            <p class="pt-4 text-2xl ml-64 dark:text-white ">Create an Account!</p>
+            <div class="flex">
+                <!-- first colum -->
+                <div class="p-4">
+                    <div class="mb-4">
+                        <label class="block mb-2 text-sm font-bold text-gray-700 dark:text-white" for="email">
+                            Full Name
+                        </label>
+                        <input class="input input-bordered w-full max-w-xs dark:text-white" type="text" placeholder="Enter name" name="name" />
+                    </div>
+                    <div class="mb-4">
+                        <label class="block mb-2 text-sm font-bold text-gray-700 dark:text-white" for="email">
+                            ID
+                        </label>
+                        <input class="input input-bordered w-full max-w-xs dark:text-white" type="text" placeholder="Enter ID" name="id" />
+                    </div>
+                    <div class="mb-4">
+                        <select class="select select-bordered w-full max-w-xs dark:text-white" for="email" id="levelTerm" name="level_term">
+                            <option selected>Select Level & Term</option>
+                        </select>
 
-                <!-- Col -->
-                <div class="w-full lg:w-full bg-white p-5 rounded-lg lg:rounded-l-none">
-                    <h3 class="pt-4 text-2xl text-center">Create an Account!</h3>
-                    <form class="px-8 pt-6 pb-8 mb-4 bg-white rounded">
-                        <div class="mb-4">
-                            <label class="block mb-2 text-sm font-bold text-gray-700" for="email">
-                                Full Name
-                            </label>
-                            <input class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="Email" />
-                        </div>
-                        <div class="mb-4">
-                            <label class="block mb-2 text-sm font-bold text-gray-700" for="email">
-                                ID
-                            </label>
-                            <input class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="Email" />
-                        </div>
-                        <div class="mb-4">
-                            <select class="form-select block mb-2 text-sm font-bold text-gray-700" for="email" id="levelTerm">
-                                <option selected>Select Level & Term</option>
-                            </select>
+                    </div>
 
-                        </div>
+                    <div class="mb-4">
+                        <select class="select select-bordered w-full max-w-xs dark:text-white" for="email" id="courseType" name="course_type">
+                            <option selected>Select Course Type</option>
+                        </select>
 
-                        <div class="mb-4">
-                            <select class="form-select block mb-2 text-sm font-bold text-gray-700" for="email" id="courseType">
-                                <option selected>Select Course Type</option>
-                            </select>
+                    </div>
 
-                        </div>
+                    <div class="mb-4">
+                        <select class="select select-bordered w-full max-w-xs dark:text-white" for="password" id="course" name="course">
+                            <option selected>Select Course</option>
+                        </select>
+                    </div>
 
-                        <div class="mb-4 md:flex md:justify-between">
-                            <div class="mb-4 md:mr-2 md:mb-0">
-                                <select class="block mb-2 text-sm font-bold text-gray-700" for="password" id="course">
-                                    <option selected>Select Course</option>
-                                </select>
-                            </div>
-                            <div class="md:ml-2">
-                                <input class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="c_password" type="text" placeholder="Enter number " />
-                            </div>
-                        </div>
+                    <div class="mb-4">
+                        <input class="input input-bordered w-full max-w-xs dark:text-white" type="text" placeholder="Enter number " name="course_number" />
+                    </div>
+                </div>
+                <!-- Second colum -->
+                <div class="p-4 mt-8">
+                    <div class="mb-4">
+                        <select class="select select-bordered w-full max-w-xs dark:text-white" id="course1" name="course1">
+                            <option selected>Select Course</option>
+                        </select>
+                    </div>
 
-                        <div class="mb-4 md:flex md:justify-between">
-                            <div class="mb-4 md:mr-2 md:mb-0">
-                                <select class="block mb-2 text-sm font-bold text-gray-700" for="password" id="course1">
-                                    <option selected>Select Course</option>
-                                </select>
-                            </div>
-                            <div class="md:ml-2">
+                    <div class="mb-4">
+                        <input class="input input-bordered w-full max-w-xs dark:text-white" type="text" placeholder="Enter number " name="course1_number" />
+                    </div>
 
-                                <input class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="c_password" type="text" placeholder="Enter number " />
-                            </div>
-                        </div>
+                    <div class="mb-4">
+                        <select class="select select-bordered w-full max-w-xs dark:text-white" id="course2" name="course2">
+                            <option selected>Select Course</option>
+                        </select>
+                    </div>
 
-                        <div class="mb-4 md:flex md:justify-between">
-                            <div class="mb-4 md:mr-2 md:mb-0">
-                                <select class="block mb-2 text-sm font-bold text-gray-700" for="password" id="course2">
-                                    <option selected>Select Course</option>
-                                </select>
-                            </div>
-                            <div class="md:ml-2">
+                    <div class="mb-4">
+                        <input class="input input-bordered w-full max-w-xs dark:text-white" type="text" placeholder="Enter number " name="course2_number" />
+                    </div>
 
-                                <input class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="c_password" type="text" placeholder="Enter number " />
-                            </div>
-                        </div>
+                    <div class="mb-4">
+                        <select class="select select-bordered w-full max-w-xs dark:text-white" id="course3" name="course3">
+                            <option selected>Select Course</option>
+                        </select>
+                    </div>
 
-                        <div class="mb-4 md:flex md:justify-between">
-                            <div class="mb-4 md:mr-2 md:mb-0">
-                                <select class="block mb-2 text-sm font-bold text-gray-700" for="password" id="course3">
-                                    <option selected>Select Course</option>
-                                </select>
-                            </div>
-                            <div class="md:ml-2">
+                    <div class="mb-4">
+                        <input class="input input-bordered w-full max-w-xs dark:text-white" type="text" placeholder="Enter number " name="course3_number" />
 
-                                <input class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="c_password" type="text" placeholder="Enter number " />
-                            </div>
-                        </div>
-
-                        <div class="mb-4 md:flex md:justify-between">
-                            <div class="mb-4 md:mr-2 md:mb-0">
-                                <select class="block mb-2 text-sm font-bold text-gray-700" for="password" id="course4">
-                                    <option selected>Select Course</option>
-                                </select>
-                            </div>
-                            <div class="md:ml-2">
-
-                                <input class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="c_password" type="text" placeholder="Enter number " />
-                            </div>
-                        </div>
-
-                        <button type="submit" class="btn btn-accent">Submit</button>
-                    </form>
+                    </div>
+                </div>
+                <!-- Third column -->
+                <div class="mt-8 p-4">
+                    <div class="mb-4">
+                        <select class="select select-bordered w-full max-w-xs dark:text-white" id="course4" name="course4">
+                            <option selected>Select Course</option>
+                        </select>
+                    </div>
+                    <div class="mb-4">
+                        <input class="input input-bordered w-full max-w-xs dark:text-white" type="text" placeholder="Enter number " name="course4_number" />
+                    </div>
                 </div>
             </div>
-        </div>
+            <div class="w-4/6 ml-6">
+                <button type="submit" class="w-full btn btn-accent">Submit</button>
+            </div>
     </div>
-</body>
+    </form>
+</div>
+</div>
 @endsection

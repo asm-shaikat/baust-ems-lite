@@ -11,7 +11,7 @@
 </head>
 <body>
     @yield('Department.navbar')
-    <div class="w-auto p-4">
+    <div class=" p-4 w-full">
         @yield('content')
     </div>
 </div>

@@ -92,7 +92,8 @@ Route::get('/department/profile',[RecuiterController::class, 'department_profile
 Route::get('/department/home',[RecuiterController::class, 'department_home']);
 
 // Result publishing
-Route::get('/department/result-publish',[RecuiterController::class, 'result_publish']);
+Route::get('/department/result-publish-view',[RecuiterController::class, 'result_publish_view']);
+Route::post('/department/result-publish',[RecuiterController::class, 'result_publish']);
 
 // Update profile info
 Route::get('/department/profile/update/{id}',[RecuiterController::class, 'department_profile_update']);
