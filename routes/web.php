@@ -99,3 +99,9 @@ Route::post('/department/result-publish',[RecuiterController::class, 'result_pub
 Route::get('/department/profile/update/{id}',[RecuiterController::class, 'department_profile_update']);
 
 Route::post('/department/profile/update/send/{id}',[RecuiterController::class, 'department_profile_update_data']);
+
+// Student Module
+Route::get('/student/show-result',[RecuiterController::class, 'show_student_result']);
+
+Route::get('/student/show-profile',[RecuiterController::class, 'student_profile']);
+
