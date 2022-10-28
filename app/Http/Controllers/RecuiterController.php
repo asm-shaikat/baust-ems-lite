@@ -51,7 +51,7 @@ class RecuiterController extends Controller
     {
         $request->validate([
             'email' => 'required|unique:students',
-            'password' => 'required|min:5|max:8',
+            'password' => 'required',
             's_phone' => 'required|max:11',
         ]);
         $recuit_student = new Student();
@@ -116,7 +116,7 @@ class RecuiterController extends Controller
         User::insert([
             'name' => $recuit_student->name,
             'email' => $recuit_student->email,
-            'password' =>   Hash::make($recuit_student->password),
+            'password' =>  $recuit_student->password,
             'user_type' => $recuit_student->user_type,
         ]);
         return back()->with('success', 'Students added successfully and Student id is' . ' ' . $dept_id);
@@ -256,5 +256,36 @@ class RecuiterController extends Controller
                 return redirect('/');
             }
         }
+
+    public function show_student_result()
+    {
+        if (Auth::check()) {
+            $getSessionUserEmail =  Auth::User()->email;
+            $getStudentTableId = DB::table('students')->select("dept_id")->where('email',$getSessionUserEmail)->get();
+            // dd($getStudentTableId);
+            $getTheoryData = DB::table('theories')->select("*")->where('id', $getStudentTableId[0]->dept_id)->get();
+            $getSessionalData = DB::table('sessionals')->select("*")->where('id', $getStudentTableId[0]->dept_id)->get();
+            $getTheoryData = json_decode($getTheoryData);
+            $getSessionalData = json_decode($getSessionalData);
+            $send_data1 = DB::table('users')->select("*")->where('email', $getSessionUserEmail)->get();
+            $data1 = json_decode($send_data1);
+            return view('Student.result', compact('data1','getTheoryData','getSessionalData'));
+        }
+    }
+
+    public function student_profile(Request $request)
+    {
+    if (Auth::check()) {
+        $getSessionUserEmail =  Auth::User()->email;
+        $send_data = DB::table('students')->select("*")->where('email', $getSessionUserEmail)->get();
+        $send_data1 = DB::table('users')->select("*")->where('email', $getSessionUserEmail)->get();
+        $data = json_decode($send_data);
+        $data1 = json_decode($send_data1);
+        return view('Student.profile', compact('data', 'data1'));
+    }
+        else{
+            return redirect('/');
+        }
+    }
 
 }

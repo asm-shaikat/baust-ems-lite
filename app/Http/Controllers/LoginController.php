@@ -55,7 +55,7 @@ class LoginController extends Controller{
                 return view('Register.home', compact('countCurrentEmployees','countLeaveEmployees','countCurrentStudentCSE', 'countPassStudentCSE','countCurrentStudentEEE', 'countPassStudentEEE','countCurrentStudentME', 'countPassStudentME','countCurrentStudentICT', 'countPassStudentICT','countCurrentStudentCE', 'countPassStudentCE','countCurrentStudentIPE', 'countPassStudentIPE','countCurrentStudentBBA', 'countPassStudentBBA','countCurrentStudentENGLISH', 'countPassStudentENGLISH'));
            
             }
-            if ($LoginUserData->user_type == 'recruiter') {
+            else if ($LoginUserData->user_type == 'recruiter') {
                 $getSessionUserEmail = $LoginUserData->email;
                 $send_data = DB::table('edetails')->select("*")->where('email', $getSessionUserEmail)->get();
                 $data = json_decode($send_data);
@@ -72,17 +72,26 @@ class LoginController extends Controller{
 
                 return view('Recruiter.dashboard', compact('data', 'fourtwos', 'fourones', 'threetwos', 'threeones', 'twotwos', 'twoones', 'onetwos', 'oneones'));
             }
-            
-            if($LoginUserData->user_type=='professor'){
-                if(Auth::check()){
+
+            else if ($LoginUserData->user_type == 'professor') {
+                if (Auth::check()) {
                     $getSessionUserEmail =  Auth::User()->email;
-                $send_data = DB::table('edetails')->select("*")->where('email',$getSessionUserEmail)->get();
-                $data = json_decode($send_data);
+                    $send_data = DB::table('edetails')->select("*")->where('email', $getSessionUserEmail)->get();
+                    $data = json_decode($send_data);
+                    $send_data1 = DB::table('users')->select("*")->where('email', $getSessionUserEmail)->get();
+                    $data1 = json_decode($send_data1);
+                    return view('Department.profile', compact('data', 'data1'));
+                }
+            }
+
+            else if($LoginUserData->user_type == 'student'){
+                $getSessionUserEmail =  Auth::User()->email;
+                // $send_data = DB::table('students')->select("*")->where('email',$getSessionUserEmail)->get();
+            //     // // $data = json_decode($send_data);
                 $send_data1 = DB::table('users')->select("*")->where('email',$getSessionUserEmail)->get();
                 $data1 = json_decode($send_data1);
-                return view('Department.profile',compact('data','data1'));
-                }
                 
+                return view('Student.home',compact('data1'));
             }
 
 
