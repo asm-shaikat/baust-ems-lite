@@ -80,7 +80,7 @@ class LoginController extends Controller{
                     $data = json_decode($send_data);
                     $send_data1 = DB::table('users')->select("*")->where('email', $getSessionUserEmail)->get();
                     $data1 = json_decode($send_data1);
-                    return view('Department.profile', compact('data', 'data1'));
+                    return view('Department.home', compact('data', 'data1'));
                 }
             }
 
