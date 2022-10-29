@@ -32,7 +32,9 @@ class MemberController extends Controller{
         $member->user_type = $request->has('user_type') ? $request->get('user_type') : "public";
         $member->save();
     }
-
-   
-    
+    //cgpa calculator
+    public function cgpa_calculate(Request $request)
+    {
+        
+    }
 }

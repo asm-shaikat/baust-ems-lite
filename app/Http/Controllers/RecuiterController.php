@@ -221,10 +221,35 @@ class RecuiterController extends Controller
                 $result_theory->level_term = $request->has('level_term') ? $request->get('level_term') : "";
                 $result_theory->course_type  = $request->has('course_type') ? $request->get('course_type'):"";
                 $result_theory->course = $request->get('course').'-'.$request->get('course_number');
+                $result_theory->course_mid = $request->get('course').'-'.$request->get('course_number-mid');
+                $result_theory->course_ct = $request->get('course').'-'.$request->get('course_number-ct');
+                $result_theory->course_assignment = $request->get('course').'-'.$request->get('course_number-assignment');
+                $result_theory->course_attendence = $request->get('course').'-'.$request->get('course_number-attendence');
+
                 $result_theory->course1 = $request->get('course1').'-'.$request->get('course1_number');
+                $result_theory->course1_mid = $request->get('course1').'-'.$request->get('course1_number-mid');
+                $result_theory->course1_ct = $request->get('course1').'-'.$request->get('course1_number-ct');
+                $result_theory->course1_assignment = $request->get('course1').'-'.$request->get('course1_number-assignment');
+                $result_theory->course1_attendence = $request->get('course1').'-'.$request->get('course1_number-attendence');
+
                 $result_theory->course2 = $request->get('course2').'-'.$request->get('course2_number');
+                $result_theory->course2_mid = $request->get('course2').'-'.$request->get('course2_number-mid');
+                $result_theory->course2_ct = $request->get('course2').'-'.$request->get('course2_number-ct');
+                $result_theory->course2_assignment = $request->get('course2').'-'.$request->get('course2_number-assignment');
+                $result_theory->course2_attendence = $request->get('course2').'-'.$request->get('course2_number-attendence');
+
                 $result_theory->course3 = $request->get('course3').'-'.$request->get('course3_number');
+                $result_theory->course3_mid = $request->get('course3').'-'.$request->get('course3_number-mid');
+                $result_theory->course3_ct = $request->get('course3').'-'.$request->get('course3_number-ct');
+                $result_theory->course3_assignment = $request->get('course3').'-'.$request->get('course3_number-assignment');
+                $result_theory->course3_attendence = $request->get('course3').'-'.$request->get('course3_number-attendence');
+
                 $result_theory->course4 = $request->get('course4').'-'.$request->get('course4_number');
+                $result_theory->course4_mid = $request->get('course4').'-'.$request->get('course4_number-mid');
+                $result_theory->course4_ct = $request->get('course4').'-'.$request->get('course4_number-ct');
+                $result_theory->course4_assignment = $request->get('course4').'-'.$request->get('course4_number-assignment');
+                $result_theory->course4_attendence = $request->get('course4').'-'.$request->get('course4_number-attendence');
+
                 $result_theory->save();
                 return back();
             }else{
