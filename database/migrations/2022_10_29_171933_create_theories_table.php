@@ -19,35 +19,35 @@ return new class extends Migration
             $table->string('level_term');
             $table->string('course_type');
             
-            $table->integer('course')->nullable(); //180
-            $table->integer('course-mid')->nullable();//45
-            $table->integer('course-ct')->nullable();//45
-            $table->integer('course-assignment')->nullable();//15
-            $table->integer('course-attendence')->nullable();//15
+            $table->string('course')->nullable(); //180
+            $table->string('course_mid')->nullable();//45
+            $table->string('course_ct')->nullable();//45
+            $table->string('course_assignment')->nullable();//15
+            $table->string('course_attendence')->nullable();//15
             
-            $table->integer('course1')->nullable(); //180
-            $table->integer('course1-mid')->nullable();//45
-            $table->integer('course1-ct')->nullable();//45
-            $table->integer('course1-assignment')->nullable();//15
-            $table->integer('course1-attendence')->nullable();//15
+            $table->string('course1')->nullable(); //180
+            $table->string('course1_mid')->nullable();//45
+            $table->string('course1_ct')->nullable();//45
+            $table->string('course1_assignment')->nullable();//15
+            $table->string('course1_attendence')->nullable();//15
 
-            $table->integer('course2')->nullable(); //180
-            $table->integer('course2-mid')->nullable();//45
-            $table->integer('course2-ct')->nullable();//45
-            $table->integer('course2-assignment')->nullable();//15
-            $table->integer('course2-attendence')->nullable();//15
+            $table->string('course2')->nullable(); //180
+            $table->string('course2_mid')->nullable();//45
+            $table->string('course2_ct')->nullable();//45
+            $table->string('course2_assignment')->nullable();//15
+            $table->string('course2_attendence')->nullable();//15
             
-            $table->integer('course3')->nullable(); //180
-            $table->integer('course3-mid')->nullable();//45
-            $table->integer('course3-ct')->nullable();//45
-            $table->integer('course3-assignment')->nullable();//15
-            $table->integer('course3-attendence')->nullable();//15
+            $table->string('course3')->nullable(); //180
+            $table->string('course3_mid')->nullable();//45
+            $table->string('course3_ct')->nullable();//45
+            $table->string('course3_assignment')->nullable();//15
+            $table->string('course3_attendence')->nullable();//15
 
-            $table->integer('course4')->nullable(); //180
-            $table->integer('course4-mid')->nullable();//45
-            $table->integer('course4-ct')->nullable();//45
-            $table->integer('course4-assignment')->nullable();//15
-            $table->integer('course4-attendence')->nullable();//15
+            $table->string('course4')->nullable(); //180
+            $table->string('course4_mid')->nullable();//45
+            $table->string('course4_ct')->nullable();//45
+            $table->string('course4_assignment')->nullable();//15
+            $table->string('course4_attendence')->nullable();//15
 
             $table->timestamps();
         });

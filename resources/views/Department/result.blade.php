@@ -8,7 +8,7 @@
     <div class=" ">
         <form action="{{ url('/department/result-publish') }}" method="post">
             @csrf
-            <p class="pt-4 text-2xl ml-64 dark:text-white ">Create an Account!</p>
+            <p class="pt-4 text-2xl ml-64 dark:text-white ">Result Publishing</p>
            
                 <div class="">
                     <div class="flex">
@@ -16,13 +16,13 @@
                         <label class="block mb-2 text-sm font-bold text-gray-700 dark:text-white" for="email">
                             Full Name
                         </label>
-                        <input class="input input-bordered w-full max-w-xs dark:text-white" type="text" placeholder="Enter name" name="name" />
+                        <input class="input input-bordered w-72 max-w-xs dark:text-white" type="text" placeholder="Enter name" name="name" />
                     </div>
                     <div class="mb-4">
                         <label class="block mb-2 text-sm font-bold text-gray-700 dark:text-white" for="email">
                             ID
                         </label>
-                        <input class="input input-bordered w-full max-w-xs dark:text-white" type="text" placeholder="Enter ID" name="id" />
+                        <input class="input input-bordered w-42 max-w-xs dark:text-white" type="text" placeholder="Enter ID" name="id" />
                     </div>
                     <div class="mt-7">
                         <select class="select select-bordered w-full max-w-xs dark:text-white" for="email" id="levelTerm" name="level_term">
@@ -53,31 +53,31 @@
                     <label class="block mb-2 text-sm font-bold text-gray-700 dark:text-white" for="email">
                             Final Exam Mark
                         </label>
-                        <input class="input input-bordered w-full max-w-xs dark:text-white" type="text" placeholder="Enter number " name="course_number" />
+                        <input class="input input-bordered w-36 dark:text-white" type="number" min='0' max='180' placeholder="Enter number " name="course_number" />
                     </div>
                     <div class="mb-4">
                     <label class="block mb-2 text-sm font-bold text-gray-700 dark:text-white" for="email">
                             Mid Term Mark
                         </label>
-                        <input class="input input-bordered w-full max-w-xs dark:text-white" type="text" placeholder="Enter number " name="course_number-mid" />
+                        <input class="input input-bordered w-36 max-w-xs dark:text-white" type="number" min='0'  max='45' placeholder="Enter number " name="course_number-mid" />
                     </div>
                     <div class="mb-4">
                     <label class="block mb-2 text-sm font-bold text-gray-700 dark:text-white" for="email">
                             CT Mark
                         </label>
-                        <input class="input input-bordered w-full max-w-xs dark:text-white" type="text" placeholder="Enter number " name="course_number-ct" />
+                        <input class="input input-bordered w-36 max-w-xs dark:text-white" type="number" max='45' min='0' placeholder="Enter number " name="course_number-ct" />
                     </div>
                     <div class="mb-4">
                     <label class="block mb-2 text-sm font-bold text-gray-700 dark:text-white" for="email">
                             Assignment Mark
                         </label>
-                        <input class="input input-bordered w-full max-w-xs dark:text-white" type="text" placeholder="Enter number " name="course_number-assignment" />
+                        <input class="input input-bordered w-36 max-w-xs dark:text-white" type="number" max='15' min='0' placeholder="Enter number " name="course_number-assignment" />
                     </div>
                     <div class="mb-4">
                     <label class="block mb-2 text-sm font-bold text-gray-700 dark:text-white" for="email">
                             Attendence Mark
                         </label>
-                        <input class="input input-bordered w-full max-w-xs dark:text-white" type="text" placeholder="Enter number " name="course_number-attendence" />
+                        <input class="input input-bordered w-36 max-w-xs dark:text-white" type="number" max='15' min='0' placeholder="Enter number " name="course_number-attendence" />
                     </div>
                 </div>
 
@@ -97,31 +97,31 @@
                     <label class="block mb-2 text-sm font-bold text-gray-700 dark:text-white" for="email">
                             Final Exam Mark
                         </label>
-                        <input class="input input-bordered w-full max-w-xs dark:text-white" type="text" placeholder="Enter number " name="course_number1" />
+                        <input class="input input-bordered w-36 max-w-xs dark:text-white" type="number" max='180' min='0' placeholder="Enter number " name="course_number1" />
                     </div>
                     <div class="mb-4">
                     <label class="block mb-2 text-sm font-bold text-gray-700 dark:text-white" for="email">
                             Mid Term Mark
                         </label>
-                        <input class="input input-bordered w-full max-w-xs dark:text-white" type="text" placeholder="Enter number " name="course_number1-mid" />
+                        <input class="input input-bordered w-36 max-w-xs dark:text-white" type="number" max='45' min='0' placeholder="Enter number " name="course_number1-mid" />
                     </div>
                     <div class="mb-4">
                     <label class="block mb-2 text-sm font-bold text-gray-700 dark:text-white" for="email">
                             CT Mark
                         </label>
-                        <input class="input input-bordered w-full max-w-xs dark:text-white" type="text" placeholder="Enter number " name="course_number1-ct" />
+                        <input class="input input-bordered w-36 max-w-xs dark:text-white" type="number" max='45' min='0' placeholder="Enter number " name="course_number1-ct" />
                     </div>
                     <div class="mb-4">
                     <label class="block mb-2 text-sm font-bold text-gray-700 dark:text-white" for="email">
                             Assignment Mark
                         </label>
-                        <input class="input input-bordered w-full max-w-xs dark:text-white" type="text" placeholder="Enter number " name="course_number1-assignment" />
+                        <input class="input input-bordered w-36 max-w-xs dark:text-white" type="number" max='15' min='0' placeholder="Enter number " name="course_number1-assignment" />
                     </div>
                     <div class="mb-4">
                     <label class="block mb-2 text-sm font-bold text-gray-700 dark:text-white" for="email">
                             Attendence Mark
                         </label>
-                        <input class="input input-bordered w-full max-w-xs dark:text-white" type="text" placeholder="Enter number " name="course_number1-attendence" />
+                        <input class="input input-bordered w-36 max-w-xs dark:text-white" type="number" max='15' min='0' placeholder="Enter number " name="course_number1-attendence" />
                     </div>
                 </div>
                 <!-- Third column -->
@@ -140,31 +140,31 @@
                     <label class="block mb-2 text-sm font-bold text-gray-700 dark:text-white" for="email">
                             Final Exam Mark
                         </label>
-                        <input class="input input-bordered w-full max-w-xs dark:text-white" type="text" placeholder="Enter number " name="course_number2" />
+                        <input class="input input-bordered w-36 max-w-xs dark:text-white" type="number" max='180' min='0' placeholder="Enter number " name="course_number2" />
                     </div>
                     <div class="mb-4">
                     <label class="block mb-2 text-sm font-bold text-gray-700 dark:text-white" for="email">
                             Mid Term Mark
                         </label>
-                        <input class="input input-bordered w-full max-w-xs dark:text-white" type="text" placeholder="Enter number " name="course_number2-mid" />
+                        <input class="input input-bordered w-36 max-w-xs dark:text-white" type="number" max='45' min='0' placeholder="Enter number " name="course_number2-mid" />
                     </div>
                     <div class="mb-4">
                     <label class="block mb-2 text-sm font-bold text-gray-700 dark:text-white" for="email">
                             CT Mark
                         </label>
-                        <input class="input input-bordered w-full max-w-xs dark:text-white" type="text" placeholder="Enter number " name="course_number2-ct" />
+                        <input class="input input-bordered w-36 max-w-xs dark:text-white" type="number" max='45' min='0' placeholder="Enter number " name="course_number2-ct" />
                     </div>
                     <div class="mb-4">
                     <label class="block mb-2 text-sm font-bold text-gray-700 dark:text-white" for="email">
                             Assignment Mark
                         </label>
-                        <input class="input input-bordered w-full max-w-xs dark:text-white" type="text" placeholder="Enter number " name="course_number2-assignment" />
+                        <input class="input input-bordered w-36 max-w-xs dark:text-white" type="number" max='15' min='0' placeholder="Enter number " name="course_number2-assignment" />
                     </div>
                     <div class="mb-4">
                     <label class="block mb-2 text-sm font-bold text-gray-700 dark:text-white" for="email">
                             Attendence Mark
                         </label>
-                        <input class="input input-bordered w-full max-w-xs dark:text-white" type="text" placeholder="Enter number " name="course_number2-attendence" />
+                        <input class="input input-bordered w-36 max-w-xs dark:text-white" type="number" max='15' min='0' placeholder="Enter number " name="course_number2-attendence" />
                     </div>
 
                 </div>
@@ -175,7 +175,7 @@
                     <label class="block mb-2 text-sm font-bold text-gray-700 dark:text-white" for="email">
                             Course-4
                         </label>
-                        <select class="select select-bordered w-full max-w-xs dark:text-white" for="password" id="course2" name="course3">
+                        <select class="select select-bordered w-full max-w-xs dark:text-white" for="password" id="course3" name="course3">
                             <option selected>Select Course</option>
                         </select>
                     </div>
@@ -184,31 +184,31 @@
                     <label class="block mb-2 text-sm font-bold text-gray-700 dark:text-white" for="email">
                             Final Exam Mark
                         </label>
-                        <input class="input input-bordered w-full max-w-xs dark:text-white" type="text" placeholder="Enter number " name="course_number3" />
+                        <input class="input input-bordered w-36 max-w-xs dark:text-white" type="number" max='180' min='0' placeholder="Enter number " name="course_number3" />
                     </div>
                     <div class="mb-4">
                     <label class="block mb-2 text-sm font-bold text-gray-700 dark:text-white" for="email">
                             Mid Term Mark
                         </label>
-                        <input class="input input-bordered w-full max-w-xs dark:text-white" type="text" placeholder="Enter number " name="course_number3-mid" />
+                        <input class="input input-bordered w-36 max-w-xs dark:text-white" type="number" max='45' min='0' placeholder="Enter number " name="course_number3-mid" />
                     </div>
                     <div class="mb-4">
                     <label class="block mb-2 text-sm font-bold text-gray-700 dark:text-white" for="email">
                             CT Mark
                         </label>
-                        <input class="input input-bordered w-full max-w-xs dark:text-white" type="text" placeholder="Enter number " name="course_number3-ct" />
+                        <input class="input input-bordered w-36 max-w-xs dark:text-white" type="number" max='45' min='0' placeholder="Enter number " name="course_number3-ct" />
                     </div>
                     <div class="mb-4">
                     <label class="block mb-2 text-sm font-bold text-gray-700 dark:text-white" for="email">
                             Assignment Mark
                         </label>
-                        <input class="input input-bordered w-full max-w-xs dark:text-white" type="text" placeholder="Enter number " name="course_number3-assignment" />
+                        <input class="input input-bordered w-36 max-w-xs dark:text-white" type="number" max='15' min='0' placeholder="Enter number " name="course_number3-assignment" />
                     </div>
                     <div class="mb-4">
                     <label class="block mb-2 text-sm font-bold text-gray-700 dark:text-white" for="email">
                             Attendence Mark
                         </label>
-                        <input class="input input-bordered w-full max-w-xs dark:text-white" type="text" placeholder="Enter number " name="course_number3-attendence" />
+                        <input class="input input-bordered w-36 max-w-xs dark:text-white" type="number" max='15' min='0' placeholder="Enter number " name="course_number3-attendence" />
                     </div>
 
                 </div>
@@ -228,31 +228,31 @@
                     <label class="block mb-2 text-sm font-bold text-gray-700 dark:text-white" for="email">
                             Final Exam Mark
                         </label>
-                        <input class="input input-bordered w-full max-w-xs dark:text-white" type="text" placeholder="Enter number " name="course_number4" />
+                        <input class="input input-bordered w-36 max-w-xs dark:text-white" type="number" max='180' min='0' placeholder="Enter number " name="course_number4" />
                     </div>
                     <div class="mb-4">
                     <label class="block mb-2 text-sm font-bold text-gray-700 dark:text-white" for="email">
                             Mid Term Mark
                         </label>
-                        <input class="input input-bordered w-full max-w-xs dark:text-white" type="text" placeholder="Enter number " name="course_number4-mid" />
+                        <input class="input input-bordered w-36 max-w-xs dark:text-white" type="number" max='45' min='0' placeholder="Enter number " name="course_number4-mid" />
                     </div>
                     <div class="mb-4">
                     <label class="block mb-2 text-sm font-bold text-gray-700 dark:text-white" for="email">
                             CT Mark
                         </label>
-                        <input class="input input-bordered w-full max-w-xs dark:text-white" type="text" placeholder="Enter number " name="course_number4-ct" />
+                        <input class="input input-bordered w-36 max-w-xs dark:text-white" type="number" max='45' min='0' placeholder="Enter number " name="course_number4-ct" />
                     </div>
                     <div class="mb-4">
                     <label class="block mb-2 text-sm font-bold text-gray-700 dark:text-white" for="email">
                             Assignment Mark
                         </label>
-                        <input class="input input-bordered w-full max-w-xs dark:text-white" type="text" placeholder="Enter number " name="course_number4-assignment" />
+                        <input class="input input-bordered w-36 max-w-xs dark:text-white" type="number" max='15' min='0' placeholder="Enter number " name="course_number4-assignment" />
                     </div>
                     <div class="mb-4">
                     <label class="block mb-2 text-sm font-bold text-gray-700 dark:text-white" for="email">
                             Attendence Mark
                         </label>
-                        <input class="input input-bordered w-full max-w-xs dark:text-white" type="text" placeholder="Enter number " name="course_number4-attendence" />
+                        <input class="input input-bordered w-36 max-w-xs dark:text-white" type="number" max='15' min='0' placeholder="Enter number " name="course_number4-attendence" />
                     </div>
 
                 </div>
